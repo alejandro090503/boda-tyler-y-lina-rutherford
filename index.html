@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
+<title>Tyler &amp; Lina · 3 Julio 2027</title>
+<meta name="description" content="Nos casamos y queremos que estés ahí. Neiva, Huila — Sábado 3 de julio de 2027 · Abre tu invitación">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://boda-tyler-y-lina-rutherford.vercel.app/">
+<meta property="og:title" content="Tyler &amp; Lina · 3 · Julio · 2027">
+<meta property="og:description" content="Nos casamos y queremos que estés ahí. Neiva, Huila — Sábado 3 de julio de 2027 · Abre tu invitación">
+<meta property="og:image" content="https://boda-tyler-y-lina-rutherford.vercel.app/og-image.jpg?v=1">
+<meta property="og:image:secure_url" content="https://boda-tyler-y-lina-rutherford.vercel.app/og-image.jpg?v=1">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Invitación de boda de Tyler &amp; Lina — 3 de julio de 2027">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tyler &amp; Lina · 3 · Julio · 2027">
+<meta name="twitter:description" content="Nos casamos y queremos que estés ahí. Neiva, Huila — Sábado 3 de julio de 2027">
+<meta name="twitter:image" content="https://boda-tyler-y-lina-rutherford.vercel.app/og-image.jpg?v=1">
+<meta name="theme-color" content="#f3e9f4">
+<script>if('scrollRestoration' in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="sobre.jpg">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<style>
+/* ── VARIABLES ── */
+:root{
+  --bg:#f3e9f4;          /* lila del cliente */
+  --surface:#F7E7CE;     /* champán */
+  --paper:#fffbf7;
+  --card:#fffdfb;
+  --accent:#72954b;      /* verde del cliente */
+  --accent-deep:#46622a; /* verde para texto (contraste AA) */
+  --accent-soft:#cfe0bd;
+  --gold:#D4AF37;
+  --gold-deep:#7d6211;   /* dorado para texto (contraste AA) */
+  --gold-soft:#efd88a;
+  --ink:#2c2530;
+  --ink-soft:#4b4252;
+  --hair:rgba(114,149,75,.28);
+  --hair-gold:rgba(212,175,55,.45);
+  --foil:linear-gradient(110deg,#8a6d14 0%,#c99a2e 18%,#D4AF37 32%,#f8e7a4 48%,#D4AF37 62%,#a8832a 82%,#8a6d14 100%);
+  --champ-foil:linear-gradient(120deg,#e9cfa3 0%,#F7E7CE 35%,#fffaf0 50%,#F7E7CE 65%,#e2c49a 100%);
+  --script:'Great Vibes',cursive;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --italiana:'Italiana',serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ── RESET ── */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden;max-width:100vw}
+a,button,input,select,textarea{touch-action:manipulation}
+button{font:inherit;color:inherit}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--serif);font-weight:500;font-size:18px;line-height:1.6;
+  -webkit-text-size-adjust:100%;text-size-adjust:100%;
+}
+body.locked{overflow:hidden}
+img{max-width:100%}
+
+/* ── ENVELOPE ── */
+#envelope-screen{position:fixed;inset:0;z-index:9000;background:#f4efe6;overflow:hidden;cursor:pointer}
+.env-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.env-paper{position:absolute;inset:0;background:url('sobre.jpg') center/cover no-repeat;transform-origin:50% 50%}
+.env-seal{
+  position:absolute;left:50%;top:50%;
+  width:min(42vw,40vh*.5625*.42*2.2,300px);aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  filter:drop-shadow(0 8px 14px rgba(80,60,10,.35));
+}
+.env-seal img{width:100%;height:100%;display:block}
+.env-seal::after{content:'';position:absolute;inset:6%;border-radius:50%;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,250,220,.75) 50%,transparent 65%);
+  background-size:250% 100%;mix-blend-mode:soft-light;animation:sealSheen 3.6s ease-in-out infinite}
+@keyframes sealSheen{0%{background-position:150% 0}60%,100%{background-position:-60% 0}}
+.env-glow{position:absolute;left:50%;top:50%;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,252,235,1) 0%,rgba(255,240,190,.85) 30%,rgba(247,231,206,0) 70%);opacity:0;pointer-events:none}
+.env-bird{position:fixed;z-index:9600;left:50%;top:50%;width:min(36vw,200px);opacity:0;pointer-events:none;will-change:transform}
+.env-bird img{width:100%;display:block;filter:drop-shadow(0 10px 14px rgba(40,30,50,.25))}
+.env-bird .wing{animation:flutter .09s linear infinite alternate;transform-origin:50% 60%}
+@keyframes flutter{from{transform:scaleY(1)}to{transform:scaleY(.94) skewX(-2deg)}}
+.env-names{position:absolute;left:0;right:0;top:12%;text-align:center;pointer-events:none}
+.env-names p{font-family:var(--italiana);font-size:17px;font-weight:700;letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;color:var(--gold-deep)}
+.env-tap{
+  position:absolute;bottom:max(64px,calc(env(safe-area-inset-bottom) + 48px));left:50%;transform:translateX(-50%);
+  z-index:10;font-family:var(--serif);font-style:italic;font-weight:600;font-size:17px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gold-deep);padding:15px 34px;white-space:nowrap;
+  border:1.5px solid rgba(125,98,17,.6);border-radius:50px;background:rgba(255,253,247,.72);
+}
+.env-tap::before{content:'';position:absolute;inset:0;border:1.5px solid rgba(212,175,55,.6);border-radius:50px;animation:envpulse 2s ease-out infinite}
+@keyframes envpulse{0%{transform:scale(1);opacity:.75}100%{transform:scale(1.28);opacity:0}}
+#env-flash{position:fixed;inset:0;z-index:9500;background:#fffaf0;opacity:0;pointer-events:none}
+
+/* ── PARTÍCULAS: hojitas verdes + destellos dorados ── */
+#particles{position:fixed;inset:0;z-index:20;pointer-events:none;overflow:hidden}
+.leaf{position:absolute;top:-30px;border-radius:0 80% 0 80%;will-change:transform}
+.spark{position:absolute;width:4px;height:4px;border-radius:50%;background:radial-gradient(circle,#fff6cf,#D4AF37 60%,transparent 70%);animation:twinkle 3.4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:.9;transform:scale(1.2)}}
+
+/* ── WRAP ── */
+.wrap{max-width:480px;margin:0 auto;overflow:hidden;position:relative;z-index:1;visibility:hidden;background:var(--bg);
+  box-shadow:0 0 80px rgba(76,52,80,.08)}
+.rv{opacity:1}
+
+/* ── BASE TIPOGRÁFICA ── */
+.sec{padding:84px 26px;position:relative;text-align:center}
+.sec--bg{background:var(--bg)}
+.sec--paper{background:var(--paper)}
+.sec--champ{background:linear-gradient(180deg,var(--bg) 0%,#f8efe6 12%,#f8efe6 88%,var(--bg) 100%)}
+.eyebrow{font-family:var(--serif);font-style:italic;font-weight:600;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px;display:block}
+.heading{font-family:var(--script);font-weight:400;font-size:clamp(50px,14vw,62px);line-height:1.12;color:var(--ink);margin-bottom:6px}
+.heading .w{display:inline-block}
+.foil-text{background:var(--foil);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold-deep);animation:goldSweep 7s ease-in-out infinite}
+@keyframes goldSweep{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+.sub{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.7;color:var(--ink-soft);max-width:350px;margin:10px auto 0}
+.italiana{font-family:var(--italiana);letter-spacing:.2em;text-transform:uppercase}
+
+/* divisor que se dibuja */
+.orn{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto 0;max-width:240px}
+.orn-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform-origin:center}
+.orn-diamond{width:7px;height:7px;background:var(--foil);transform:rotate(45deg);flex-shrink:0}
+.orn-diamond-sm{width:4px;height:4px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;opacity:.6}
+.sec-divider{display:flex;justify-content:center;padding:6px 0;background:transparent}
+.sec-divider svg{width:220px;height:40px;overflow:visible}
+.sec-divider path{fill:none;stroke:var(--gold);stroke-width:1.1;stroke-linecap:round}
+.sec-divider circle{fill:var(--gold)}
+
+/* tarjeta editorial (Emilio) */
+.card{background:var(--card);border:1px solid var(--hair-gold);border-radius:6px;padding:38px 26px;position:relative;box-shadow:0 18px 40px -22px rgba(76,52,80,.35)}
+.card::before{content:'';position:absolute;inset:9px;border:1px solid rgba(114,149,75,.22);border-radius:3px;pointer-events:none}
+
+/* botones */
+@keyframes shimmerBtn{0%{background-position:200% center}100%{background-position:-200% center}}
+.btn-main{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:15px 30px;border-radius:50px;
+  background:linear-gradient(105deg,#3d5524 0%,#4a6630 30%,#7a9c55 45%,#a8c486 50%,#7a9c55 55%,#4a6630 70%,#3d5524 100%);
+  background-size:200% 100%;animation:shimmerBtn 4.5s ease-in-out infinite;color:#fff;text-decoration:none;
+  font-family:var(--italiana);font-size:15px;letter-spacing:.22em;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);cursor:pointer;
+  box-shadow:0 10px 24px -12px rgba(70,98,42,.7)}
+.btn-main svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:12px 24px;border-radius:50px;background:rgba(255,255,255,.55);
+  border:1.5px solid var(--gold);color:var(--gold-deep);text-decoration:none;font-family:var(--italiana);font-size:14px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s}
+.btn-ghost:hover{background:var(--gold);color:#fff}
+.btn-ghost svg{width:15px;height:15px;fill:currentColor;flex-shrink:0}
+
+/* ── MENÚ FLOTANTE ── */
+.navpill{position:fixed;z-index:800;left:50%;transform:translate(-50%,40px);opacity:0;pointer-events:none;
+  display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;
+  background:rgba(253,248,252,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(212,175,55,.35);box-shadow:0 18px 40px -16px rgba(60,40,70,.35)}
+.navpill.on{opacity:1;pointer-events:auto;transform:translate(-50%,0);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.np-mono{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--script);font-size:22px;color:var(--gold-deep);
+  border:1px solid var(--hair-gold);background:rgba(255,255,255,.6);text-decoration:none;flex-shrink:0}
+.np-links{display:none;position:relative;align-items:center}
+.np-link{position:relative;z-index:1;padding:11px 13px;font-family:var(--italiana);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;white-space:nowrap;border-radius:999px}
+.np-ind{position:absolute;top:0;left:0;height:100%;border-radius:999px;background:rgba(114,149,75,.18);border:1px solid rgba(114,149,75,.35);transition:transform .45s var(--ease),width .45s var(--ease);z-index:0}
+.np-sep{width:1px;height:24px;background:var(--hair-gold);margin:0 4px}
+.np-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;background:transparent;cursor:pointer;color:var(--accent-deep)}
+.np-icon svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.np-menu-btn{white-space:nowrap;min-height:44px;padding:0 18px;border-radius:999px;border:none;cursor:pointer;background:var(--accent-deep);color:#fff;font-family:var(--italiana);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.np-lang{min-width:44px;height:44px;border-radius:999px;border:1px solid var(--hair-gold);background:rgba(255,255,255,.6);cursor:pointer;font-family:var(--italiana);font-size:13px;letter-spacing:.12em;color:var(--gold-deep);padding:0 10px}
+@media (max-width:1023px){.navpill{bottom:max(1rem,env(safe-area-inset-bottom))}}
+@media (min-width:1024px){.navpill{top:20px}.np-links{display:flex}.np-menu-btn{display:none}}
+/* menú pantalla completa */
+.fullmenu{position:fixed;inset:0;z-index:900;background:rgba(246,238,247,.95);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  clip-path:circle(0% at 85% 95%);visibility:hidden;display:flex;flex-direction:column;padding:22px 26px max(26px,env(safe-area-inset-bottom))}
+.fm-top{display:flex;align-items:center;justify-content:space-between}
+.fm-close{width:48px;height:48px;border-radius:50%;border:1px solid var(--hair-gold);background:rgba(255,255,255,.7);cursor:pointer;font-size:22px;color:var(--ink)}
+.fm-list{list-style:none;margin:auto 0;padding:10px 0}
+.fm-list li{border-bottom:1px solid rgba(212,175,55,.25)}
+.fm-list a{display:flex;align-items:baseline;gap:16px;padding:10px 0;min-height:44px;text-decoration:none;color:var(--ink);font-family:var(--serif);font-weight:600;font-size:clamp(2rem,9vw,3rem);line-height:1.15}
+.fm-list a span{font-family:var(--italiana);font-size:13px;letter-spacing:.2em;color:var(--gold-deep)}
+.fm-list a.cur{font-style:italic;color:var(--accent-deep)}
+.fm-foot{text-align:center;font-family:var(--italiana);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep)}
+
+/* ── HERO ── */
+#hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding-bottom:104px}
+.hero-media{position:absolute;inset:-8% 0 0 0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('portada.jpg') center 18%/cover no-repeat;animation:kenburns 22s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07) translate(-1%,-1%)}}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(243,233,244,0) 38%,rgba(243,233,244,.78) 62%,rgba(243,233,244,.96) 76%,var(--bg) 92%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px}
+.hero-pre{text-shadow:0 0 12px #fff,0 0 4px #fff;font-family:var(--italiana);font-size:15px;letter-spacing:.4em;padding-left:.4em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:6px}
+.hero-name{font-family:var(--script);font-size:clamp(68px,20vw,96px);line-height:.95;color:var(--ink);display:block;text-shadow:0 2px 24px rgba(255,255,255,.6)}
+.hero-amp{font-family:var(--script);font-size:54px;line-height:1;display:block;margin:2px 0}
+.hero-date{font-family:var(--italiana);font-size:16px;letter-spacing:.38em;padding-left:.38em;color:var(--ink);margin-top:16px;display:block}
+.scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .7s}
+.scroll-hint.hidden{opacity:0;pointer-events:none}
+.scroll-hint span{font-family:var(--serif);font-style:italic;font-weight:600;font-size:14px;letter-spacing:.4em;padding-left:.4em;text-transform:uppercase;color:var(--accent-deep)}
+.scroll-hint svg{width:26px;height:26px;stroke:var(--accent-deep);stroke-width:1.6;fill:none;animation:scrollbounce 1.8s ease-in-out infinite}
+@keyframes scrollbounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* ── FECHA ── */
+#fecha{padding:30px 26px 56px;text-align:center;background:var(--bg)}
+.fecha-label{font-family:var(--serif);font-style:italic;font-weight:600;font-size:17px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent-deep)}
+.fecha-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:10px}
+.fecha-side{font-family:var(--italiana);font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);padding:10px 0;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);min-width:84px}
+.fecha-day{font-family:var(--serif);font-weight:600;font-size:76px;line-height:1}
+.fecha-year{font-family:var(--italiana);letter-spacing:.5em;padding-left:.5em;font-size:16px;margin-top:8px;color:var(--ink)}
+
+/* ── COUNTDOWN ── */
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:380px;margin:30px auto 0}
+.cd-box{background:var(--card);border:1px solid var(--hair-gold);border-radius:12px;padding:18px 4px 14px;position:relative;overflow:hidden;perspective:300px}
+.cd-box::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,240,190,.55) 50%,transparent 65%);background-size:260% 100%;background-position:160% 0;pointer-events:none}
+.cd-box.glint::after{animation:cdGlint .9s ease-out}
+@keyframes cdGlint{from{background-position:160% 0}to{background-position:-60% 0}}
+.cd-num{font-family:var(--serif);font-size:40px;font-weight:600;line-height:1;color:var(--ink);display:inline-block;transform-origin:50% 60%}
+.cd-num.tick{animation:cdTick .45s var(--ease)}
+@keyframes cdTick{0%{transform:rotateX(-80deg);opacity:.2}100%{transform:rotateX(0);opacity:1}}
+.cd-lbl{font-family:var(--italiana);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-deep);margin-top:8px}
+
+/* ── QUOTE ── */
+.quote-txt{font-family:var(--serif);font-style:italic;font-weight:500;font-size:22px;line-height:1.75;color:var(--ink);max-width:350px;margin:0 auto}
+
+/* ── UBICACIÓN (Emilio) ── */
+.loc-list{display:flex;flex-direction:column;gap:22px;margin-top:30px}
+.loc-card{transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.loc-card.lift{box-shadow:0 34px 60px -26px rgba(76,52,80,.5)}
+.loc-lbl{font-family:var(--serif);font-style:italic;font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);display:block;margin-bottom:8px}
+.loc-venue{font-family:var(--script);font-size:40px;line-height:1.15;color:var(--ink);margin-bottom:10px}
+.loc-time{display:inline-flex;align-items:center;gap:8px;font-family:var(--serif);font-weight:700;font-size:22px;color:var(--ink);margin-bottom:6px}
+.loc-time svg{width:18px;height:18px;stroke:var(--gold-deep);fill:none;stroke-width:1.8}
+.loc-addr{font-family:var(--serif);font-size:18px;color:var(--ink-soft);line-height:1.55;margin-bottom:4px}
+.loc-pin{display:inline-block;animation:pinBeat 1.8s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes pinBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}}
+.loc-card .btn-main{margin-top:18px;width:100%}
+.cal-row{margin-top:26px}
+
+/* ── DRESS CODE (Fabiola) ── */
+.dc-type{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--ink);margin-top:6px}
+.dc-note{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-soft);max-width:340px;margin:10px auto 0}
+.dc-rules{list-style:none;max-width:340px;margin:18px auto 0;text-align:left}
+.dc-rules li{display:flex;gap:10px;align-items:flex-start;font-size:18px;line-height:1.5;color:var(--ink);padding:8px 0;border-bottom:1px solid rgba(212,175,55,.25)}
+.dc-rules li b{font-weight:700;color:var(--accent-deep);min-width:92px}
+.dc-figs{display:flex;justify-content:center;align-items:flex-end;gap:26px;margin:28px auto 6px}
+.dc-figs img{height:210px;width:auto;filter:drop-shadow(0 8px 14px rgba(60,40,70,.18))}
+.dc-fig{animation:dcSway 6s ease-in-out infinite;transform-origin:50% 100%}
+.dc-fig:nth-child(2){animation-delay:-3s}
+@keyframes dcSway{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-6px) rotate(1.2deg)}}
+.dc-looks{display:flex;flex-direction:column;gap:12px;max-width:360px;margin:22px auto 30px}
+.dc-look{display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;cursor:pointer;border-radius:14px;text-align:left;
+  border:1px solid var(--hair-gold);background:linear-gradient(120deg,#fff 0%,#f9f1f9 100%);
+  box-shadow:0 10px 24px rgba(60,40,70,.1);transition:transform .22s cubic-bezier(.34,1.56,.64,1),border-color .22s;animation:dcLookBreathe 3.4s ease-in-out infinite}
+.dc-looks .dc-look:nth-child(2){animation-delay:1.7s}
+@keyframes dcLookBreathe{0%,100%{box-shadow:0 10px 24px rgba(60,40,70,.1),0 0 0 0 rgba(212,175,55,0)}50%{box-shadow:0 10px 24px rgba(60,40,70,.1),0 0 20px 2px rgba(212,175,55,.3)}}
+.dc-look:hover,.dc-look:focus-visible{transform:translateY(-3px);border-color:var(--gold);outline:none}
+.dc-look-ico{flex:0 0 auto;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;background:var(--foil);box-shadow:0 4px 12px rgba(125,98,17,.35)}
+.dc-look-ico svg{width:24px;height:24px}
+.dc-look-txt{display:flex;flex-direction:column;gap:2px;flex:1}
+.dc-look-rol{font-family:var(--serif);font-style:italic;font-weight:700;font-size:23px;color:var(--ink);line-height:1.15}
+.dc-look-cta{font-family:var(--italiana);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-deep)}
+.dc-look-arrow{flex:0 0 auto;width:22px;height:22px;color:var(--gold-deep);animation:dcArrowNudge 1.9s ease-in-out infinite}
+@keyframes dcArrowNudge{0%,100%{transform:translateX(0);opacity:.6}50%{transform:translateX(4px);opacity:1}}
+.dc-palette-lbl{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--ink);margin-top:6px}
+.dc-swatches{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin:16px auto 0}
+.dc-swatch-dot{width:34px;height:34px;border-radius:50%;display:inline-block;box-shadow:0 4px 14px rgba(60,40,70,.15),inset 0 0 0 1px rgba(0,0,0,.06);position:relative}
+.dc-swatch-dot::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px dashed rgba(125,98,17,.45)}
+.dc-white{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;font-size:17px;font-style:italic;color:var(--ink-soft)}
+.dc-white i{width:22px;height:22px;border-radius:50%;background:#fff;border:1.5px solid rgba(60,40,70,.3);position:relative;flex-shrink:0}
+.dc-white i::after{content:'';position:absolute;left:-3px;right:-3px;top:50%;height:1.5px;background:#a3311f;transform:rotate(-45deg)}
+.dc-viewer{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(44,37,48,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .28s ease}
+.dc-viewer.on{opacity:1}
+.dc-viewer[hidden]{display:none}
+.dcv-box{position:relative;width:min(92vw,440px);border-radius:20px;overflow:hidden;background:var(--bg);border:1px solid var(--hair-gold);box-shadow:0 26px 70px rgba(44,37,48,.45);padding:18px 0 16px}
+.dcv-head{font-family:var(--serif);font-style:italic;font-weight:700;font-size:23px;color:var(--ink);text-align:center;margin:0 56px 14px}
+.dcv-viewport{overflow:hidden}
+.dcv-track{display:flex;transition:transform .42s cubic-bezier(.25,.8,.25,1);touch-action:pan-y}
+.dcv-slide{flex:0 0 100%;margin:0;display:flex;justify-content:center;padding:0 40px}
+.dcv-frame{position:relative;width:100%;max-width:300px;height:min(56vh,440px);padding:14px;border-radius:6px;background:var(--foil);box-shadow:0 14px 30px rgba(44,37,48,.28),inset 0 0 0 1px rgba(255,255,255,.55)}
+.dcv-mat{position:relative;height:100%;border-radius:3px;display:flex;align-items:flex-end;justify-content:center;padding:20px 18px 14px;
+  background:radial-gradient(ellipse 72% 58% at 50% 62%,#fff 0%,#faf3fa 62%,#f1e4f1 100%);box-shadow:inset 0 0 0 1px rgba(114,149,75,.3),inset 0 0 0 7px #fbf6fb,inset 0 0 0 8px rgba(212,175,55,.5)}
+.dcv-mat img{max-height:100%;max-width:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(44,37,48,.2))}
+.dcv-frame::before,.dcv-frame::after{content:'';position:absolute;width:18px;height:18px;border:1.5px solid #fff;opacity:.7;pointer-events:none}
+.dcv-frame::before{top:6px;left:6px;border-right:none;border-bottom:none}
+.dcv-frame::after{bottom:6px;right:6px;border-left:none;border-top:none}
+.dcv-cap{margin:14px 16px 8px;text-align:center;font-family:var(--italiana);font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.dcv-dots{display:flex;justify-content:center;gap:9px}
+.dcv-dot{width:10px;height:10px;border-radius:50%;padding:0;cursor:pointer;border:1px solid var(--accent-deep);background:transparent}
+.dcv-dot.on{background:var(--accent-deep);transform:scale(1.25)}
+.dcv-nav,.dc-viewer-close{position:absolute;z-index:3;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;border:none;background:var(--accent-deep);box-shadow:0 6px 16px rgba(44,37,48,.35)}
+.dcv-nav{top:50%;transform:translateY(-50%)}
+.dcv-nav svg,.dc-viewer-close svg{width:20px;height:20px}
+.dcv-prev{left:6px}.dcv-next{right:6px}
+.dc-viewer-close{top:10px;right:10px}
+
+/* ── MOMENTOS (rueda Eliud) ── */
+.wheel-stage{position:relative;width:100%;height:420px;margin:36px auto 0;perspective:1600px;overflow:visible}
+.wheel{position:absolute;width:100%;height:100%;transform-style:preserve-3d;cursor:grab;touch-action:pan-y}
+.wheel.dragging{cursor:grabbing}
+.wheel-item{position:absolute;width:140px;height:196px;left:50%;top:50%;margin-left:-70px;margin-top:-98px;border-radius:16px;overflow:hidden;
+  border:2px solid rgba(212,175,55,.55);box-shadow:0 12px 34px rgba(60,40,70,.28);background:var(--paper);user-select:none;-webkit-user-select:none}
+.wheel-item img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.wheel-hint{font-family:var(--serif);font-style:italic;font-weight:600;font-size:16px;letter-spacing:.14em;color:var(--accent-deep);margin-top:26px}
+.gal-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.gal-strip figure{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:3/4;box-shadow:0 14px 30px -16px rgba(60,40,70,.5)}
+.gal-strip figure:nth-child(odd){transform:translateY(22px)}
+.gal-strip img{width:100%;height:118%;object-fit:cover;display:block}
+.gal-note{font-style:italic;color:var(--ink-soft);font-size:17px;margin-top:40px}
+
+/* ── HUILA ── */
+.huila-list{display:flex;flex-direction:column;gap:26px;margin-top:32px;text-align:left}
+.huila-card{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--hair-gold);box-shadow:0 18px 36px -22px rgba(60,40,70,.45)}
+.huila-ph{position:relative;aspect-ratio:16/10;overflow:hidden}
+.huila-ph img{width:100%;height:115%;object-fit:cover;display:block}
+.huila-num{position:absolute;top:12px;left:14px;font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.12em;color:#fff;background:rgba(44,37,48,.55);padding:4px 12px;border-radius:999px}
+.huila-body{padding:18px 20px 22px}
+.huila-title{font-family:var(--serif);font-weight:700;font-size:25px;color:var(--ink);line-height:1.2}
+.huila-meta{font-family:var(--italiana);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin:4px 0 8px}
+.huila-txt{font-size:17.5px;line-height:1.6;color:var(--ink-soft)}
+
+/* ── HOSPEDAJE ── */
+.hosp-alert{display:flex;gap:12px;align-items:flex-start;text-align:left;max-width:380px;margin:24px auto 0;padding:16px 18px;border-radius:14px;
+  background:linear-gradient(120deg,#fff8e6,#fdf1d6);border:1.5px solid var(--gold);box-shadow:0 10px 24px -14px rgba(125,98,17,.5)}
+.hosp-alert svg{width:26px;height:26px;flex-shrink:0;stroke:var(--gold-deep);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.hosp-alert p{font-size:17.5px;line-height:1.55;color:var(--ink)}
+.hosp-alert b{color:var(--gold-deep)}
+.hosp-switch{position:relative;display:inline-flex;margin:26px auto 0;padding:5px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--hair-gold)}
+.hosp-switch button{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border:none;background:transparent;cursor:pointer;font-family:var(--italiana);font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);transition:color .4s}
+.hosp-switch button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8}
+.hosp-switch button.on{color:#fff}
+.hosp-switch .hs-ind{position:absolute;top:5px;bottom:5px;left:5px;border-radius:999px;background:var(--accent-deep);transition:transform .45s var(--ease),width .45s var(--ease)}
+.flip{perspective:1600px;margin-top:22px}
+.flip-inner{position:relative;transition:transform .75s var(--ease);transform-style:preserve-3d}
+.flip.mapa .flip-inner{transform:rotateY(180deg)}
+.flip-face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.flip-back{position:absolute;inset:0;transform:rotateY(180deg)}
+.flip:not(.mapa) .flip-back{pointer-events:none}
+.flip.mapa .flip-front{pointer-events:none}
+.hosp-carousel{position:relative;max-width:400px;margin:0 auto}
+.hosp-viewport{overflow:hidden}
+.hosp-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.hosp-slide{flex:0 0 100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 22px}
+.hosp-num{font-family:var(--serif);font-weight:600;font-size:60px;line-height:1;color:rgba(212,175,55,.42);margin-bottom:-28px;position:relative;z-index:0}
+.hosp-photo{position:relative;z-index:1;width:200px;height:200px;border-radius:50%;overflow:hidden;border:3px solid rgba(212,175,55,.6);box-shadow:0 12px 34px rgba(60,40,70,.18);margin-bottom:18px}
+.hosp-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hosp-type{font-family:var(--italiana);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep)}
+.hosp-name{font-family:var(--serif);font-weight:700;font-size:24px;color:var(--ink);margin:2px 0 4px}
+.hosp-addr{font-size:17px;color:var(--ink-soft);line-height:1.5}
+.hosp-dist{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
+.hosp-dist span{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:rgba(114,149,75,.12);border:1px solid var(--hair);font-size:15.5px;font-weight:600;color:var(--accent-deep)}
+.hosp-dist svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.hosp-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hosp-arrow{position:absolute;top:118px;transform:translateY(-50%);width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.8);border:1px solid var(--hair-gold);border-radius:50%;cursor:pointer;color:var(--accent-deep);z-index:2;padding:0}
+.hosp-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.hosp-arrow.prev{left:0}.hosp-arrow.next{right:0}
+.hosp-dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
+.hosp-dots button{width:10px;height:10px;border-radius:50%;border:none;background:rgba(114,149,75,.28);cursor:pointer;padding:0}
+.hosp-dots button.active{background:var(--accent-deep);transform:scale(1.3)}
+.map-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--hair-gold);box-shadow:0 18px 40px -22px rgba(60,40,70,.45);background:var(--paper)}
+#hotelMap{width:100%;height:min(70vh,520px)}
+.map-legend{font-style:italic;font-size:16px;color:var(--ink-soft);padding:10px 14px 4px}
+.map-chips{display:flex;gap:10px;overflow-x:auto;padding:8px 14px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.map-chip{flex:0 0 auto;scroll-snap-align:start;display:flex;align-items:center;gap:10px;min-height:44px;padding:8px 14px 8px 8px;border-radius:999px;border:1px solid var(--hair-gold);background:#fff;cursor:pointer;text-align:left}
+.map-chip b{width:30px;height:30px;border-radius:50%;background:var(--accent-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.map-chip span{font-size:15.5px;font-weight:600;color:var(--ink);line-height:1.2}
+.map-chip small{display:block;font-weight:500;color:var(--ink-soft);font-size:14px}
+.map-chip.on{border-color:var(--accent-deep);box-shadow:0 0 0 2px rgba(70,98,42,.25)}
+.mk-venue{display:flex;flex-direction:column;align-items:center}
+.mk-venue div{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#fffbf3;border:1.5px solid var(--gold);font-family:var(--italiana);font-size:12px;letter-spacing:.16em;color:var(--ink);box-shadow:0 6px 14px rgba(44,37,48,.25);white-space:nowrap}
+.mk-venue div svg{width:13px;height:13px;fill:var(--gold-deep)}
+.mk-venue i{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:8px solid var(--gold)}
+.mk-hotel{width:32px;height:32px;border-radius:50%;background:var(--accent-deep);border:2.5px solid #fff;color:#fff;font-family:var(--serif);font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(44,37,48,.35);cursor:pointer;transition:transform .3s}
+.mk-hotel.on{transform:scale(1.35);background:var(--gold-deep)}
+.maplibregl-popup-content{font-family:var(--serif);font-size:16px;border-radius:12px;padding:10px 14px;color:var(--ink)}
+
+/* ── NO NIÑOS ── */
+.kids-card{max-width:380px;margin:26px auto 0}
+.kids-ico{width:64px;height:64px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--foil);box-shadow:0 8px 18px -8px rgba(125,98,17,.6)}
+.kids-ico svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.kids-txt{font-family:var(--serif);font-style:italic;font-weight:600;font-size:21px;line-height:1.65;color:var(--ink)}
+
+/* ── REGALOS (Faustino) ── */
+.gift-msg{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.75;color:var(--ink-soft);max-width:350px;margin:14px auto 0}
+.env-interactive{display:flex;flex-direction:column;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent;border:none;background:none;padding:0;margin:40px auto 0;position:relative;overflow:hidden;border-radius:14px}
+.env-body{perspective:700px;position:relative;width:260px;height:200px;animation:env-breathe 3.6s ease-in-out infinite}
+.env-body svg.env-svg{width:100%;height:100%}
+.env-flap-wrap{position:absolute;top:46px;left:18px;width:224px;height:86px;transform-origin:top center;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:2}
+.env-interactive.open .env-flap-wrap{transform:rotateX(-175deg)}
+.env-open-content{overflow:hidden;max-height:0;opacity:0;transition:max-height .55s .3s ease,opacity .4s .38s ease;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 20px;text-align:center}
+.env-interactive.open .env-open-content{max-height:300px;opacity:1}
+.env-mailbox-icon{width:42px;height:42px;color:var(--gold-deep);margin-top:10px}
+.env-title{font-family:var(--script);font-size:40px;color:var(--ink);line-height:1.2;margin-top:4px}
+.env-desc{font-family:var(--serif);font-size:17.5px;font-style:italic;color:var(--ink-soft);line-height:1.65}
+.env-tap-hint{font-family:var(--italiana);font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-deep);margin-top:10px;transition:opacity .3s}
+.env-tap-hint.gone{opacity:0}
+@keyframes env-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.sheen{position:relative;overflow:hidden}
+.sheen::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:50%;background:linear-gradient(100deg,transparent,rgba(255,248,215,.7),transparent);transform:skewX(-18deg);pointer-events:none;opacity:0}
+.sheen.go::after{animation:sheenPass 1.4s ease-out forwards}
+@keyframes sheenPass{0%{left:-60%;opacity:1}100%{left:130%;opacity:1}}
+
+/* ── ÁLBUM ── */
+.album-qr{position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:16px;margin-top:26px;background:var(--card);border:1px solid var(--hair-gold);border-radius:20px;padding:24px}
+.album-qr img{width:200px;height:200px;border-radius:10px;display:block}
+.album-qr.bloqueado img{filter:blur(7px);opacity:.75}
+.album-qr.bloqueado .btn-main{pointer-events:none;opacity:.45!important}
+.album-aviso{font-style:italic;font-size:17px;color:var(--ink-soft);max-width:330px;margin:16px auto 0;line-height:1.6}
+.album-qr:not(.bloqueado) + .album-aviso{display:none}
+
+/* ── RSVP ── */
+.rsvp{max-width:410px;margin:30px auto 0;padding:36px 22px 30px;text-align:center}
+.rsvp-for{font-family:var(--italiana);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);display:none;margin-bottom:4px}
+.rsvp-guest{font-family:var(--serif);font-weight:700;font-size:clamp(30px,8.5vw,38px);line-height:1.2;color:var(--ink);margin:0 0 14px;text-shadow:0 0 18px rgba(212,175,55,.45);animation:guestGlow 3.6s ease-in-out infinite}
+@keyframes guestGlow{0%,100%{text-shadow:0 0 12px rgba(212,175,55,.3)}50%{text-shadow:0 0 24px rgba(212,175,55,.65)}}
+.rsvp-pases-display{display:flex;align-items:center;justify-content:space-between;gap:14px;max-width:320px;margin:0 auto 22px;padding:12px 22px;border-radius:999px;border:1px solid var(--hair-gold);background:rgba(255,255,255,.75)}
+.rsvp-pases-label{font-family:var(--italiana);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.rsvp-pases-num{font-weight:700;font-size:30px;line-height:1;color:var(--accent-deep)}
+.rsvp-toggle{display:flex;gap:8px;max-width:340px;margin:0 auto 18px;padding:5px;border-radius:999px;background:rgba(114,149,75,.1);border:1px solid var(--hair)}
+.rsvp-toggle-btn{flex:1;min-height:48px;padding:10px 6px;border-radius:999px;border:none;background:transparent;cursor:pointer;font-family:var(--serif);font-weight:700;font-size:17.5px;color:var(--ink-soft);transition:background .4s,color .4s}
+.rsvp-toggle-btn.rsvp-toggle-selected-yes{background:var(--accent-deep);color:#fff}
+.rsvp-toggle-btn.rsvp-toggle-selected-no{background:#fff;color:var(--gold-deep);box-shadow:0 6px 14px -8px rgba(80,60,20,.4)}
+.rsvp-toggle-btn:disabled{opacity:.55;cursor:not-allowed}
+.rsvp-fields{flex-direction:column;gap:10px;max-width:340px;margin:0 auto 14px}
+.rsvp-input,.rsvp-textarea{width:100%;padding:15px 18px;border-radius:14px;border:1.5px solid rgba(114,149,75,.4);background:#fff;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);outline:none;transition:border-color .3s,box-shadow .3s;-webkit-appearance:none}
+.rsvp-textarea{min-height:92px;resize:vertical;font-weight:500;line-height:1.5}
+.rsvp-input:focus,.rsvp-textarea:focus{border-color:var(--accent-deep);box-shadow:0 0 0 4px rgba(70,98,42,.12)}
+.rsvp-input::placeholder,.rsvp-textarea::placeholder{color:var(--ink-soft);opacity:.7;font-weight:500}
+.rsvp-input.rsvp-input-falta{border-color:#a3311f;box-shadow:0 0 0 4px rgba(163,49,31,.12)}
+.rsvp-diet{display:none;max-width:340px;margin:4px auto 18px;text-align:left}
+.rsvp-diet label{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-weight:700;font-size:18px;color:var(--ink);margin-bottom:8px}
+.rsvp-diet label svg{width:20px;height:20px;stroke:var(--accent-deep);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.rsvp-diet small{display:block;font-size:15.5px;color:var(--ink-soft);margin-top:6px;font-style:italic}
+.rsvp-contador-wrap{display:none;max-width:340px;margin:0 auto 18px}
+.rsvp-contador-nota{font-style:italic;font-size:17px;line-height:1.5;color:var(--ink-soft);margin:0 auto 10px}
+.rsvp-contador{display:flex;align-items:center;justify-content:center;gap:20px;padding:8px 14px;border-radius:999px;background:rgba(114,149,75,.1);border:1px solid var(--hair)}
+.rsvp-contador-btn{width:46px;height:46px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--accent-deep);background:#fff;color:var(--accent-deep);font-family:var(--serif);font-size:26px;font-weight:700;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.rsvp-contador-btn:disabled{opacity:.35;cursor:default}
+.rsvp-contador-valor{font-size:38px;font-weight:700;line-height:1;color:var(--accent-deep);min-width:52px}
+.rsvp-contador-pie{font-family:var(--italiana);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin:10px auto 0}
+.rsvp-btn{width:100%;max-width:340px;white-space:nowrap;letter-spacing:.14em;font-size:14px;padding-left:16px;padding-right:16px;animation:shimmerBtn 4.5s ease-in-out infinite,breathe 3.4s ease-in-out infinite}
+@keyframes breathe{0%,100%{box-shadow:0 10px 24px -12px rgba(70,98,42,.7),0 0 0 0 rgba(114,149,75,.35)}50%{box-shadow:0 12px 30px -10px rgba(70,98,42,.8),0 0 0 10px rgba(114,149,75,0)}}
+.rsvp-btn:disabled{opacity:.55;cursor:not-allowed}
+#rsvp-feedback{display:none;max-width:340px;margin:14px auto 0;font-style:italic;font-weight:600;font-size:17px;line-height:1.5}
+.rsvp-gracias{max-width:340px;margin:0 auto}
+.rsvp-gracias-icon{color:var(--accent-deep);margin:0 auto 10px;display:block}
+.rsvp-gracias-title{font-family:var(--serif);font-weight:700;font-size:28px;line-height:1.2;color:var(--ink);margin-bottom:8px}
+.rsvp-gracias-sub{font-style:italic;font-size:18px;line-height:1.6;color:var(--ink-soft);margin-bottom:18px}
+.rsvp-editar-btn{min-height:46px;padding:10px 22px;border-radius:999px;border:1.5px solid var(--hair-gold);background:transparent;cursor:pointer;font-family:var(--serif);font-style:italic;font-weight:700;font-size:17px;color:var(--gold-deep)}
+.rsvp-editar-btn:disabled{opacity:.45;cursor:not-allowed}
+.rsvp-limit{display:block;margin-top:22px;font-family:var(--italiana);font-size:13.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep)}
+.confetti-p{position:fixed;width:9px;height:14px;top:-20px;z-index:99999;pointer-events:none;border-radius:2px}
+
+/* ── FOOTER ── */
+#footer{padding:70px 28px 120px;text-align:center;background:var(--bg)}
+.footer-names{font-family:var(--script);font-size:58px;line-height:1.1}
+.footer-date{font-family:var(--italiana);font-size:15px;letter-spacing:.36em;color:var(--ink);margin-top:10px}
+.footer-hr{width:60px;height:1px;background:var(--gold);margin:24px auto 16px}
+.footer-credit{font-family:var(--serif);font-size:15px;letter-spacing:.06em;color:var(--ink-soft);text-decoration:none}
+
+/* ── VINILO ── */
+.vinyl-btn{position:fixed;bottom:max(86px,calc(env(safe-area-inset-bottom) + 76px));right:16px;z-index:850;width:62px;height:62px;border-radius:50%;padding:0;border:none;cursor:pointer;background:transparent;opacity:0;transform:scale(.6);pointer-events:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .35s;box-shadow:0 4px 18px rgba(0,0,0,.4)}
+@media (min-width:1024px){.vinyl-btn{bottom:24px;right:24px}}
+.vinyl-btn.is-ready{opacity:1;transform:scale(1);pointer-events:auto}
+.vinyl-spin{width:100%;height:100%;border-radius:50%}
+.vinyl-btn.is-playing .vinyl-spin{animation:vinylSpin 1.8s linear infinite}
+@keyframes vinylSpin{to{transform:rotate(360deg)}}
+.vinyl-disc{width:100%;height:100%;border-radius:50%;position:relative;overflow:hidden;
+  background:radial-gradient(circle,#1a1420 4%,transparent 4.5%),radial-gradient(circle,#72954b 0%,#8eb064 17%,#4a6630 19%,transparent 19.5%),repeating-radial-gradient(circle,transparent 20%,rgba(255,255,255,.06) 21%,transparent 22%,transparent 25%),radial-gradient(circle,#0f0b12 0%,#1c1622 60%,#0f0b12 100%)}
+.vinyl-icons{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:16px;height:16px;z-index:2}
+.vinyl-icons svg{width:100%;height:100%;display:block}
+.vinyl-icon-pause{display:none}
+.vinyl-btn.is-playing .vinyl-icon-play{display:none}
+.vinyl-btn.is-playing .vinyl-icon-pause{display:block}
+.vinyl-btn::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid var(--gold);opacity:.4;animation:vinylPulse 3s ease-in-out infinite}
+@keyframes vinylPulse{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.12);opacity:.05}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}
+  .hero-bg{animation:none}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ═══════════ PARTÍCULAS ═══════════ -->
+<div id="particles" aria-hidden="true"></div>
+
+<!-- ═══════════ SOBRE ═══════════ -->
+<div id="envelope-screen" role="button" aria-label="Abrir invitación">
+  <div class="env-stage">
+    <div class="env-paper" id="envPaper"></div>
+    <div class="env-glow" id="envGlow"></div>
+    <div class="env-seal" id="envSeal"><img src="sello.png" alt="Sello T &amp; L"></div>
+  </div>
+  <div class="env-names" id="envNames"><p>Tyler &amp; Lina</p></div>
+  <div class="env-tap" id="envTap" data-en="Tap to open">Toca para abrir</div>
+</div>
+<div id="env-flash"></div>
+<div class="env-bird" id="bird1"><img class="wing" src="img/colibri1.png" alt=""></div>
+<div class="env-bird" id="bird2"><img class="wing" src="img/colibri2.png" alt=""></div>
+
+
+<!-- ═══════════ MENÚ ═══════════ -->
+<nav class="navpill" id="navpill" aria-label="Secciones">
+  <a class="np-mono" href="#hero" aria-label="Inicio">T&amp;L</a>
+  <div class="np-links" id="npLinks"><span class="np-ind" id="npInd"></span></div>
+  <span class="np-sep"></span>
+  <button class="np-lang" id="langBtn" type="button" aria-label="Change language / Cambiar idioma">EN</button>
+  <button class="np-icon" id="shareBtn" type="button" aria-label="Compartir"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+  <button class="np-menu-btn" id="menuBtn" type="button" data-en="☰ Menu">☰ Menú</button>
+</nav>
+<div class="fullmenu" id="fullmenu" aria-hidden="true">
+  <div class="fm-top">
+    <span class="np-mono">T&amp;L</span>
+    <button class="fm-close" id="fmClose" type="button" aria-label="Cerrar menú">✕</button>
+  </div>
+  <ol class="fm-list" id="fmList"></ol>
+  <p class="fm-foot" data-en="July 3, 2027 · Neiva, Huila">3 de julio de 2027 · Neiva, Huila</p>
+</div>
+
+<div class="wrap">
+
+  <!-- ── HERO ── -->
+  <section id="hero" data-nav="Inicio" data-nav-en="Home">
+    <div class="hero-media" id="heroMedia"><div class="hero-bg"></div></div>
+    <div class="hero-veil"></div>
+    <div class="hero-content" id="heroContent">
+      <span class="hero-pre" data-en="We're getting married">Nos casamos</span>
+      <span class="hero-name">Tyler</span>
+      <span class="hero-amp foil-text">&amp;</span>
+      <span class="hero-name">Lina</span>
+      <span class="hero-date">03 · 07 · 2027</span>
+    </div>
+    <div class="scroll-hint" id="scrollHint"><span data-en="Scroll">Desliza</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </section>
+
+  <!-- ── FECHA ── -->
+  <section id="fecha">
+    <p class="fecha-label rv" data-en="Saturday">Sábado</p>
+    <div class="fecha-row rv">
+      <span class="fecha-side" data-en="July">Julio</span>
+      <span class="fecha-day foil-text">03</span>
+      <span class="fecha-side" data-en="5:00 PM">5:00 p.m.</span>
+    </div>
+    <p class="fecha-year rv">2027</p>
+  </section>
+
+  <!-- ── CUENTA REGRESIVA ── -->
+  <section id="countdown" class="sec sec--champ">
+    <span class="eyebrow rv" data-en="Only">Faltan</span>
+    <h2 class="heading split" data-en="Countdown">Cuenta regresiva</h2>
+    <div class="cd-grid">
+      <div class="cd-box"><div class="cd-num" id="cdDias">000</div><div class="cd-lbl" data-en="Days">Días</div></div>
+      <div class="cd-box"><div class="cd-num" id="cdHoras">00</div><div class="cd-lbl" data-en="Hours">Horas</div></div>
+      <div class="cd-box"><div class="cd-num" id="cdMins">00</div><div class="cd-lbl" data-en="Min">Min</div></div>
+      <div class="cd-box"><div class="cd-num" id="cdSecs">00</div><div class="cd-lbl" data-en="Sec">Seg</div></div>
+    </div>
+  </section>
+
+  <div class="sec-divider" aria-hidden="true"><svg viewBox="0 0 220 40"><path class="draw" d="M4 20 C40 20 60 6 90 14 C100 17 104 20 110 20 C116 20 120 17 130 14 C160 6 180 20 216 20"/><circle cx="110" cy="20" r="3"/></svg></div>
+
+  <!-- ── FRASE ── -->
+  <section id="quote" class="sec sec--bg">
+    <p class="quote-txt rv" data-en="&ldquo;Like the hummingbird returning to the flower it loves, we choose each other every day. Today we want to celebrate that choice with you.&rdquo;">&ldquo;Como el colibrí que vuelve a la flor que ama, nosotros nos elegimos cada día. Hoy queremos celebrar esa elección contigo.&rdquo;</p>
+    <div class="orn"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+  </section>
+
+  <!-- ── UBICACIÓN ── -->
+  <section id="ubicacion" class="sec sec--champ" data-nav="Lugar" data-nav-en="Venue">
+    <span class="eyebrow rv" data-en="Where we celebrate">Dónde celebramos</span>
+    <h2 class="heading split" data-en="Location">Ubicación</h2>
+    <p class="sub rv" style="font-weight:600;color:var(--accent-deep)">Neiva, Huila · Colombia</p>
+    <div class="loc-list">
+      <div class="card loc-card">
+        <span class="loc-lbl" data-en="Religious Ceremony">Ceremonia religiosa</span>
+        <div class="loc-venue">Iglesia Colonial</div>
+        <div class="loc-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-en="5:00 PM">5:00 p.m.</span></div>
+        <p class="loc-addr">Calle 8a · Centro, Neiva, Huila</p>
+        <a href="https://maps.app.goo.gl/8gDyq95WLRDCsrUj9" target="_blank" rel="noopener" class="btn-main">
+          <svg class="loc-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+          <span data-en="Get directions">Cómo llegar</span>
+        </a>
+      </div>
+      <div class="card loc-card">
+        <span class="loc-lbl" data-en="Reception">Recepción</span>
+        <div class="loc-venue" data-en="Reception Hall">Salón de recepción</div>
+        <div class="loc-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-en="7:30 PM">7:30 p.m.</span></div>
+        <p class="loc-addr">Calle 6a # 10-13, Neiva, Huila</p>
+        <a href="https://maps.app.goo.gl/K6g1xKPGesDc3ipK8" target="_blank" rel="noopener" class="btn-main">
+          <svg class="loc-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+          <span data-en="Get directions">Cómo llegar</span>
+        </a>
+      </div>
+    </div>
+    <div class="cal-row rv">
+      <a class="btn-ghost" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Tyler+%26+Lina&dates=20270703T220000Z/20270704T060000Z&details=Ceremonia+religiosa+5%3A00+p.m.+%E2%80%94+Iglesia+Colonial%2C+Calle+8a%2C+Neiva%0ARecepci%C3%B3n+7%3A30+p.m.+%E2%80%94+Calle+6a+%23+10-13%2C+Neiva%0Ahttps%3A%2F%2Fboda-tyler-y-lina-rutherford.vercel.app&location=Iglesia+Colonial%2C+Calle+8a%2C+Neiva%2C+Huila%2C+Colombia">
+        <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.89 3 3 3.9 3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+        <span data-en="Add to calendar">Agregar al calendario</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── DRESS CODE ── -->
+  <section id="dresscode" class="sec sec--bg" data-nav="Vestimenta" data-nav-en="Dress code">
+    <span class="eyebrow rv" data-en="Dress code">Código de vestimenta</span>
+    <h2 class="heading split" data-en="Formal">Formal</h2>
+    <p class="dc-note rv" data-en="Pastel tones, please — let's fill the day with soft color.">Tonos pastel, por favor: llenemos el día de color suave.</p>
+    <ul class="dc-rules rv">
+      <li><b data-en="Gentlemen">Caballeros</b><span data-en="Formal linen suit; long-sleeve shirt, no tie.">Traje formal de lino, camisa manga larga, sin corbata.</span></li>
+      <li><b data-en="Ladies">Damas</b><span data-en="Long dress.">Vestido largo.</span></li>
+    </ul>
+    <div class="dc-figs" aria-hidden="true">
+      <img class="dc-fig" id="dcFigCab" src="img/look-cab-1.png" alt="">
+      <img class="dc-fig" id="dcFigDama" src="img/look-dama-1.png" alt="">
+    </div>
+    <div class="dc-looks">
+      <button class="dc-look" type="button" data-look="caballeros" aria-label="Ver ideas de vestimenta para caballeros">
+        <span class="dc-look-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 3 4-3 3 2.2c1.2.9 1.9 2.3 1.9 3.8V21H3V9c0-1.5.7-2.9 1.9-3.8L8 3z"/><path d="M12 6v15"/><path d="M9.4 4.2L12 9l2.6-4.8"/></svg></span>
+        <span class="dc-look-txt"><span class="dc-look-rol" data-en="Gentlemen">Caballeros</span><span class="dc-look-cta" data-en="See ideas">Ver ideas</span></span>
+        <span class="dc-look-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+      </button>
+      <button class="dc-look" type="button" data-look="damas" aria-label="Ver ideas de vestimenta para damas">
+        <span class="dc-look-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1.4 5.2L21 21H3l7.4-12.8L9 3z"/><path d="M10.6 8.2h2.8"/></svg></span>
+        <span class="dc-look-txt"><span class="dc-look-rol" data-en="Ladies">Damas</span><span class="dc-look-cta" data-en="See ideas">Ver ideas</span></span>
+        <span class="dc-look-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+      </button>
+    </div>
+    <p class="dc-palette-lbl rv" data-en="Suggested colors">Colores sugeridos</p>
+    <div class="dc-swatches rv">
+      <span class="dc-swatch-dot" style="background:#ffdad8" title="Rosa pastel"></span>
+      <span class="dc-swatch-dot" style="background:#fffbb9" title="Amarillo pastel"></span>
+      <span class="dc-swatch-dot" style="background:#caf0fe" title="Celeste pastel"></span>
+      <span class="dc-swatch-dot" style="background:#cce8b5" title="Verde pastel"></span>
+      <span class="dc-swatch-dot" style="background:#f1c9fe" title="Lila pastel"></span>
+    </div>
+    <p class="dc-white rv"><i aria-hidden="true"></i><span data-en="White is reserved for the bride.">El color blanco está reservado para la novia.</span></p>
+
+    <div class="dc-viewer" id="dcViewer" role="dialog" aria-modal="true" aria-label="Ideas de vestimenta" hidden>
+      <div class="dcv-box">
+        <button class="dc-viewer-close" id="dcViewerClose" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <p class="dcv-head" id="dcvHead"></p>
+        <div class="dcv-viewport"><div class="dcv-track" id="dcvTrack"></div></div>
+        <button class="dcv-nav dcv-prev" id="dcvPrev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="dcv-nav dcv-next" id="dcvNext" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <p class="dcv-cap" id="dcvCap"></p>
+        <div class="dcv-dots" id="dcvDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-divider" aria-hidden="true"><svg viewBox="0 0 220 40"><path class="draw" d="M4 20 C40 20 60 6 90 14 C100 17 104 20 110 20 C116 20 120 17 130 14 C160 6 180 20 216 20"/><circle cx="110" cy="20" r="3"/></svg></div>
+
+  <!-- ── MOMENTOS ── -->
+  <section id="momentos" class="sec sec--champ" data-nav="Momentos" data-nav-en="Moments" style="padding-left:0;padding-right:0">
+    <span class="eyebrow rv" data-en="Moments">Momentos</span>
+    <h2 class="heading split" data-en="Our story">Nuestra historia</h2>
+    <p class="sub rv" data-en="Little pieces of the road that brought us here.">Pedacitos del camino que nos trajo hasta aquí.</p>
+    <div class="wheel-stage">
+      <div class="wheel" id="wheel"></div>
+    </div>
+    <p class="wheel-hint" data-en="Drag to spin">Arrastra para girar</p>
+    <div class="gal-strip" style="padding:0 22px">
+      <figure class="clipr"><img class="plx" data-speed="-6" src="foto2.jpg" alt="Tyler y Lina" loading="lazy"></figure>
+      <figure class="clipr"><img class="plx" data-speed="6" src="foto5.jpg" alt="Tyler y Lina" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- ── HUILA ── -->
+  <section id="huila" class="sec sec--bg" data-nav="Huila" data-nav-en="Huila">
+    <span class="eyebrow rv" data-en="While you're here">Ya que vienes</span>
+    <h2 class="heading split" data-en="Things to do in Huila">Planes en el Huila</h2>
+    <p class="sub rv" data-en="Make the most of your trip: some of our favorite places to visit.">Aprovecha el viaje: algunos de nuestros lugares favoritos para conocer.</p>
+    <div class="huila-list">
+      <article class="huila-card">
+        <div class="huila-ph clipr"><img class="plx" data-speed="-5" src="img/termales-rivera.jpg" alt="Termales de Rivera" loading="lazy"><span class="huila-num">01</span></div>
+        <div class="huila-body">
+          <h3 class="huila-title" data-en="Rivera Hot Springs">Termales de Rivera</h3>
+          <p class="huila-meta" data-en="Rivera · 30 min from Neiva">Rivera · 30 min de Neiva</p>
+          <p class="huila-txt" data-en="Natural hot-spring pools surrounded by greenery. Perfect to relax the day after the party.">Piscinas de aguas termales naturales rodeadas de verde. Perfectas para descansar después de la fiesta.</p>
+        </div>
+      </article>
+      <article class="huila-card">
+        <div class="huila-ph clipr"><img class="plx" data-speed="-5" src="img/tatacoa.jpg" alt="Desierto de la Tatacoa" loading="lazy"><span class="huila-num">02</span></div>
+        <div class="huila-body">
+          <h3 class="huila-title" data-en="Tatacoa Desert">Desierto de la Tatacoa</h3>
+          <p class="huila-meta" data-en="Villavieja · 1 h from Neiva">Villavieja · 1 h de Neiva</p>
+          <p class="huila-txt" data-en="Red and gray canyons by day and one of the clearest night skies in Colombia for stargazing.">Cañones rojos y grises de día, y uno de los cielos más limpios de Colombia para ver estrellas de noche.</p>
+        </div>
+      </article>
+      <article class="huila-card">
+        <div class="huila-ph clipr"><img class="plx" data-speed="-5" src="img/betania.jpg" alt="Represa de Betania" loading="lazy"><span class="huila-num">03</span></div>
+        <div class="huila-body">
+          <h3 class="huila-title" data-en="Betania Reservoir">Represa de Betania</h3>
+          <p class="huila-meta" data-en="Yaguará · 1 h from Neiva">Yaguará · 1 h de Neiva</p>
+          <p class="huila-txt" data-en="A huge lake among mountains: boat rides, fresh fish by the water and spectacular sunsets.">Un gran lago entre montañas: paseos en lancha, pescado fresco a la orilla y atardeceres espectaculares.</p>
+        </div>
+      </article>
+      <article class="huila-card">
+        <div class="huila-ph clipr"><img class="plx" data-speed="-5" src="img/san-pedro.jpg" alt="Festival de San Pedro" loading="lazy"><span class="huila-num">04</span></div>
+        <div class="huila-body">
+          <h3 class="huila-title" data-en="San Pedro Festival">Festival de San Pedro</h3>
+          <p class="huila-meta" data-en="Neiva · late June – early July">Neiva · finales de junio y principios de julio</p>
+          <p class="huila-txt" data-en="Our wedding falls during Neiva's biggest celebration: parades, sanjuanero dancing and the National Bambuco Pageant. Enjoy it!">Nuestra boda coincide con la fiesta más grande de Neiva: desfiles, sanjuanero y el Reinado Nacional del Bambuco. ¡Disfrútalo!</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── HOSPEDAJE ── -->
+  <section id="hospedaje" class="sec sec--champ" data-nav="Hospedaje" data-nav-en="Hotels">
+    <span class="eyebrow rv" data-en="For your stay">Para tu estancia</span>
+    <h2 class="heading split" data-en="Where to stay">Hospedaje</h2>
+    <div class="hosp-alert">
+      <svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>
+      <p data-en="<b>Book in January or as soon as possible.</b> It's high season in the city and we want you there, so it's important to reserve your hotel early."><b>Reserva en enero o lo antes posible.</b> Es temporada alta en la ciudad y queremos contar con tu presencia, por lo que es importante que reserves tu hotel cuanto antes.</p>
+    </div>
+    <div class="hosp-switch" id="hospSwitch" role="tablist">
+      <span class="hs-ind" id="hsInd"></span>
+      <button type="button" class="on" data-view="lista" role="tab"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span data-en="List">Lista</span></button>
+      <button type="button" data-view="mapa" role="tab"><svg viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg><span data-en="Map">Mapa</span></button>
+    </div>
+    <div class="flip" id="hospFlip">
+      <div class="flip-inner">
+        <div class="flip-face flip-front">
+          <div class="hosp-carousel">
+            <button class="hosp-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <button class="hosp-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <div class="hosp-viewport"><div class="hosp-track" id="hospTrack"></div></div>
+            <div class="hosp-dots" id="hospDots"></div>
+          </div>
+        </div>
+        <div class="flip-face flip-back">
+          <div class="map-wrap">
+            <div id="hotelMap"></div>
+            <p class="map-legend" data-en="Tap a number to see the hotel">Toca un número para ver el hotel</p>
+            <div class="map-chips" id="mapChips"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLO ADULTOS ── -->
+  <section id="ninos" class="sec sec--bg">
+    <span class="eyebrow rv" data-en="Adults only">Solo adultos</span>
+    <h2 class="heading split" data-en="A little note">Una nota especial</h2>
+    <div class="card kids-card rv">
+      <div class="kids-ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.3-9A5.5 5.5 0 0112 6a5.5 5.5 0 019.3 6c-2.3 4.6-9.3 9-9.3 9z"/></svg></div>
+      <p class="kids-txt" data-en="This time the little ones stay with someone who loves them very much, because their parents have a mission: celebrate with us!">Esta vez los niños se quedan con alguien que los quiera mucho, porque sus papás tienen una misión: ¡celebrar con nosotros!</p>
+    </div>
+  </section>
+
+  <!-- ── REGALOS ── -->
+  <section id="regalos" class="sec sec--champ" data-nav="Regalos" data-nav-en="Gifts">
+    <span class="eyebrow rv" data-en="Gift registry">Mesa de regalos</span>
+    <h2 class="heading split" data-en="Your presence is our gift">Tu presencia es nuestro regalo</h2>
+    <p class="gift-msg rv" data-en="Your presence on this day is our greatest gift. However, if you wish to give us something, a monetary contribution to help us fulfill the dream of our own home will be received with all our love.">Tu presencia en este día es nuestro mayor regalo. Sin embargo, si deseas hacernos un detalle, un aporte económico para ayudarnos a cumplir el sueño de nuestro propio hogar será recibido con todo nuestro amor.</p>
+    <button class="env-interactive sheen" id="giftEnv" type="button" aria-label="Sobre — toca para abrir" aria-expanded="false">
+      <div class="env-body">
+        <svg class="env-svg" viewBox="0 0 260 200" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="tl-env-fill" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#fbf4ec"/><stop offset="100%" stop-color="#fffaf3"/></linearGradient>
+            <linearGradient id="tl-seal-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8a6d14"/><stop offset="45%" stop-color="#D4AF37"/><stop offset="60%" stop-color="#f8e7a4"/><stop offset="100%" stop-color="#a8832a"/></linearGradient>
+          </defs>
+          <rect x="18" y="52" width="224" height="132" rx="10" fill="url(#tl-env-fill)" stroke="rgba(212,175,55,.6)" stroke-width="1.4"/>
+          <path d="M18 184 L130 110 L242 184" stroke="rgba(212,175,55,.45)" stroke-width="1" fill="none"/>
+          <line x1="90" y1="30" x2="90" y2="20" stroke="#D4AF37" stroke-width="1.3" stroke-linecap="round" opacity=".6"/>
+          <line x1="130" y1="24" x2="130" y2="14" stroke="#D4AF37" stroke-width="1.3" stroke-linecap="round" opacity=".75"/>
+          <line x1="170" y1="30" x2="170" y2="20" stroke="#D4AF37" stroke-width="1.3" stroke-linecap="round" opacity=".6"/>
+          <line x1="110" y1="18" x2="110" y2="10" stroke="#72954b" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+          <line x1="150" y1="18" x2="150" y2="10" stroke="#72954b" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+          <circle cx="130" cy="118" r="17" fill="url(#tl-seal-fill)" stroke="rgba(125,98,17,.6)" stroke-width="1"/>
+          <text x="130" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#4a3a08">T&amp;L</text>
+        </svg>
+        <div class="env-flap-wrap" aria-hidden="true">
+          <svg viewBox="0 0 224 86" preserveAspectRatio="none" style="width:100%;height:100%">
+            <defs><linearGradient id="tl-flap-fill" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#e9d5ea"/><stop offset="100%" stop-color="#fffaf3"/></linearGradient></defs>
+            <path d="M0 0 L112 86 L224 0 Z" fill="url(#tl-flap-fill)" stroke="rgba(212,175,55,.65)" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="env-open-content" aria-live="polite">
+        <svg class="env-mailbox-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="8" y="22" width="36" height="24" rx="5"/><path d="M8 30 Q26 38 44 30"/><rect x="18" y="8" width="16" height="16" rx="2"/><path d="M18 8 Q26 3 34 8"/></svg>
+        <p class="env-title" data-en="Envelope Shower">Lluvia de sobres</p>
+        <p class="env-desc" data-en="On the wedding day there will be a special box where you can leave your envelope with love.">El día de la boda habrá una urna especial donde podrás depositar tu sobre con mucho cariño.</p>
+      </div>
+    </button>
+    <p class="env-tap-hint" id="giftHint" data-en="Tap the envelope">Toca el sobre</p>
+  </section>
+
+  <!-- ── ÁLBUM ── -->
+  <section id="album" class="sec sec--bg" data-nav="Álbum" data-nav-en="Album">
+    <span class="eyebrow rv" data-en="Share the moment">Comparte el momento</span>
+    <h2 class="heading split" data-en="Photo album">Álbum de fotos</h2>
+    <p class="sub rv" data-en="Help us keep every moment: upload here the photos you take during the event.">Ayúdanos a guardar cada momento: sube aquí las fotos que tomes durante el evento.</p>
+    <div class="album-qr" data-fecha="2027-07-03">
+      <img src="qr-album.png" alt="Código QR del álbum de fotos" width="200" height="200">
+      <a class="btn-main" href="/album"><span data-en="Upload my photos">Subir mis fotos</span></a>
+    </div>
+    <p class="album-aviso" data-en="The photo album opens on the day of the event. Come back here and upload all your photos of the night ✨">El álbum de fotos se habilita el día del evento. Regresa aquí y sube todas tus fotos de la noche ✨</p>
+  </section>
+
+  <!-- ── RSVP ── -->
+  <section id="rsvp" class="sec sec--champ" data-nav="Confirmar" data-nav-en="RSVP">
+    <span class="eyebrow rv" data-en="RSVP">Confirmación</span>
+    <h2 class="heading split" data-en="Will you join us?">¿Nos acompañas?</h2>
+    <p class="sub rv" data-en="Your presence will make this day truly special. Please confirm before April 2, 2027.">Tu presencia hará de este día algo verdaderamente especial. Por favor confírmanos antes del 2 de abril de 2027.</p>
+    <div class="card rsvp">
+      <p class="rsvp-for" id="rsvp-for" data-en="This invitation is for">Esta invitación es para</p>
+      <p class="rsvp-guest" id="rsvp-guest" style="display:none"></p>
+      <div class="rsvp-pases-display" id="rsvp-pases-display" style="display:none">
+        <div class="rsvp-pases-label" data-en="Passes">Pases asignados</div>
+        <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
+      </div>
+      <div id="rsvp-bandeja">
+        <div class="rsvp-toggle">
+          <button class="rsvp-toggle-btn" id="btnYes" type="button" data-en="I'll be there">Asistiré</button>
+          <button class="rsvp-toggle-btn" id="btnNo" type="button" data-en="Can't make it">No podré asistir</button>
+        </div>
+        <div class="rsvp-contador-wrap" id="rsvp-contador-wrap">
+          <p class="rsvp-contador-nota" id="rsvp-contador-nota"></p>
+          <div class="rsvp-contador">
+            <button class="rsvp-contador-btn" id="rsvp-menos" type="button" aria-label="Quitar un pase">&minus;</button>
+            <span class="rsvp-contador-valor" id="rsvp-contador-valor" aria-live="polite">1</span>
+            <button class="rsvp-contador-btn" id="rsvp-mas" type="button" aria-label="Agregar un pase">+</button>
+          </div>
+          <p class="rsvp-contador-pie" id="rsvp-contador-pie"></p>
+        </div>
+        <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
+        <div class="rsvp-diet" id="rsvp-diet">
+          <label for="rsvpDiet"><svg viewBox="0 0 24 24"><path d="M7 2v9a3 3 0 006 0V2M10 2v20M17 2c-1.7 1.3-3 4-3 7s1.3 4 3 4v9"/></svg><span data-en="Allergies or special diet?">¿Alergias o dieta especial?</span></label>
+          <textarea class="rsvp-textarea" id="rsvpDiet" maxlength="160" placeholder="Ej.: vegetariana, alergia a la nuez, sin gluten…" data-ph-en="E.g.: vegetarian, nut allergy, gluten-free…"></textarea>
+          <small data-en="Optional. Tell us who and what, so we can plan the menu.">Opcional. Cuéntanos quién y qué, para tenerlo en cuenta en el menú.</small>
+        </div>
+        <button class="btn-main rsvp-btn" id="rsvp-confirm-btn" type="button"><span id="rsvp-btn-text">Confirmar asistencia</span></button>
+      </div>
+      <div class="rsvp-gracias" id="rsvp-gracias" style="display:none">
+        <svg class="rsvp-gracias-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>
+        <p class="rsvp-gracias-title" id="rsvp-gracias-title"></p>
+        <p class="rsvp-gracias-sub" id="rsvp-gracias-sub"></p>
+        <button class="rsvp-editar-btn" id="rsvp-editar-btn" type="button" data-en="Change my answer">Modificar mi respuesta</button>
+      </div>
+      <p id="rsvp-feedback"></p>
+      <span class="rsvp-limit" data-en="Please reply by April 2, 2027">Confirma antes del 2 de abril de 2027</span>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer id="footer">
+    <div class="footer-names foil-text">Tyler &amp; Lina</div>
+    <div class="footer-date">03 · 07 · 2027</div>
+    <div class="footer-hr"></div>
+    <a href="https://www.instagram.com/elysium.invitaciones" target="_blank" rel="noopener" class="footer-credit"><span data-en="Designed by">Diseño por</span> @elysium.invitaciones</a>
+  </footer>
+
+</div><!-- /.wrap -->
+
+<!-- ── MÚSICA ── -->
+<audio id="music" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-tyler-y-lina-rutherford/cancion.mp3" preload="none" loop></audio>
+<button class="vinyl-btn" id="music-btn" type="button" aria-label="Reproducir o pausar la música">
+  <div class="vinyl-spin"><div class="vinyl-disc"></div></div>
+  <div class="vinyl-icons">
+    <svg class="vinyl-icon-play" viewBox="0 0 24 24" fill="#f3e9f4" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#f3e9f4" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </div>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+history.scrollRestoration='manual';
+window.scrollTo(0,0);
+gsap.registerPlugin(ScrollTrigger);
+var prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var LANG='es';
+function T(es,en){return LANG==='en'?en:es;}
+
+/* ═══════════ DATOS DE HOTELES (coords + distancias calculadas una vez con OSRM) ═══════════ */
+var VENUES={
+  ceremonia:{lat:2.9269514,lng:-75.2885091,es:'CEREMONIA',en:'CEREMONY'},
+  recepcion:{lat:2.927476,lng:-75.2835938,es:'RECEPCIÓN',en:'RECEPTION'}
+};
+/* km = ruta OSRM; minutos estimados con tráfico urbano de Neiva */
+var HOTELS=[
+  {name:'Hotel Neiva Plaza',type:'Hotel · Centro',typeEn:'Hotel · Downtown',addr:'Calle 7 # 4-62, Neiva',lat:2.9258604,lng:-75.2889038,
+   minRec:3,kmRec:'0.7',minCer:4,kmCer:'0.9',img:'img/hotel-neiva-plaza.jpg',web:'https://www.hotelneivaplaza.com',maps:'https://www.google.com/maps/search/?api=1&query=Hotel+Neiva+Plaza+Calle+7+4-62+Neiva'},
+  {name:'Hotel Rosales Boutique',type:'Hotel boutique',typeEn:'Boutique hotel',addr:'Calle 6 # 6-56, Neiva',lat:2.9273,lng:-75.2819,
+   minRec:3,kmRec:'0.5',minCer:6,kmCer:'1.7',img:'img/hotel-rosales.jpg',web:'https://www.hotelrosalesneiva.com/galeria',maps:'https://www.google.com/maps/search/?api=1&query=Hotel+Rosales+Calle+6+6-56+Neiva'},
+  {name:'GHL Style Hotel Neiva',type:'Hotel · Norte',typeEn:'Hotel · North',addr:'Carrera 16 # 42-195, C.C. San Pedro Plaza, Neiva',lat:2.951963,lng:-75.287786,
+   minRec:11,kmRec:'3.5',minCer:11,kmCer:'3.3',img:'img/hotel-ghl.jpg',web:'https://en.ghlhotelneiva.com',maps:'https://www.google.com/maps/search/?api=1&query=GHL+Style+Hotel+Neiva'}
+];
+
+/* ═══════════ IDIOMA ═══════════ */
+function applyLang(l){
+  LANG=l;document.documentElement.lang=l;
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    if(el.dataset.es===undefined) el.dataset.es=el.innerHTML;
+    el.innerHTML=l==='en'?el.dataset.en:el.dataset.es;
+  });
+  document.querySelectorAll('[data-ph-en]').forEach(function(el){
+    if(el.dataset.phEs===undefined) el.dataset.phEs=el.placeholder;
+    el.placeholder=l==='en'?el.dataset.phEn:el.dataset.phEs;
+  });
+  document.getElementById('langBtn').textContent=l==='en'?'ES':'EN';
+  buildMenu();renderHotels();
+  if(window.__rsvpLang) window.__rsvpLang();
+  if(window.__mapLang) window.__mapLang();
+  try{localStorage.setItem('tl-lang',l);}catch(e){}
+}
+document.getElementById('langBtn').addEventListener('click',function(){applyLang(LANG==='es'?'en':'es');});
+
+/* ═══════════ PARTÍCULAS ═══════════ */
+(function(){
+  var wrap=document.getElementById('particles');
+  var colors=['#72954b','#8eb064','#a8c486','#cfe0bd','#D4AF37'];
+  var n=prefersReduced?0:(window.innerWidth<600?14:22);
+  for(var i=0;i<n;i++){
+    var p=document.createElement('div');var s=7+Math.random()*9;
+    p.className='leaf';
+    p.style.cssText='width:'+s+'px;height:'+(s*1.5)+'px;left:'+(Math.random()*100)+'%;background:'+colors[i%colors.length]+';opacity:'+(0.25+Math.random()*.35).toFixed(2);
+    wrap.appendChild(p);
+    var dur=30+Math.random()*24;
+    gsap.fromTo(p,{y:-40,rotation:Math.random()*360,x:0},{y:window.innerHeight+80,rotation:'+='+(Math.random()>.5?380:-380),x:(Math.random()-.5)*110,duration:dur,ease:'none',repeat:-1,delay:-Math.random()*dur});
+  }
+  for(var j=0;j<(prefersReduced?0:10);j++){
+    var sp=document.createElement('span');sp.className='spark';
+    sp.style.left=Math.random()*100+'%';sp.style.top=Math.random()*100+'%';sp.style.animationDelay=(Math.random()*3.4).toFixed(2)+'s';
+    wrap.appendChild(sp);
+  }
+})();
+
+/* ═══════════ SOBRE + COLIBRÍES ═══════════ */
+function initEnvelope(){
+  var scr=document.getElementById('envelope-screen'),paper=document.getElementById('envPaper'),seal=document.getElementById('envSeal'),
+      glow=document.getElementById('envGlow'),tap=document.getElementById('envTap'),flash=document.getElementById('env-flash'),
+      names=document.getElementById('envNames'),b1=document.getElementById('bird1'),b2=document.getElementById('bird2'),
+      wrap=document.querySelector('.wrap'),done=false;
+  /* el sello se ubica sobre la punta de la solapa (720x1290 → 354,645) */
+  function placeSeal(){
+    var W=window.innerWidth,H=window.innerHeight,iw=720,ih=1290,sc=Math.max(W/iw,H/ih);
+    var ox=(W-iw*sc)/2,oy=(H-ih*sc)/2;
+    seal.style.width=(300*sc)+'px';
+    seal.style.left=(ox+354*sc)+'px';seal.style.top=(oy+645*sc)+'px';
+    glow.style.left=seal.style.left;glow.style.top=seal.style.top;
+    b1.style.left=b2.style.left=seal.style.left;b1.style.top=b2.style.top=seal.style.top;
+  }
+  placeSeal();window.addEventListener('resize',placeSeal);
+  gsap.fromTo(paper,{scale:1.06},{scale:1,duration:2.4,ease:'power2.out'});
+  gsap.from(names,{opacity:0,y:-10,duration:1,delay:.6});
+  gsap.from(tap,{opacity:0,y:8,duration:.9,delay:1.1,ease:'power2.out'});
+
+  function open(e){
+    if(done) return;done=true;if(e&&e.cancelable) e.preventDefault();
+    if(window._startAudio) window._startAudio();
+    gsap.to([tap,names],{opacity:0,duration:.3});
+    var W=window.innerWidth,H=window.innerHeight,bw=b1.offsetWidth||150;
+    var tl=gsap.timeline({onComplete:function(){gsap.set([b1,b2],{display:'none'});}});
+    /* 1. el sello se levanta y brilla (Barbara: el sello sube con la solapa) */
+    tl.to(seal,{scale:.94,duration:.18,ease:'power2.in'})
+      .to(seal,{scale:1.18,duration:.7,ease:'back.out(2)'})
+      .to(paper,{scale:1.08,duration:1.6,ease:'power1.inOut'},'<')
+    /* 2. destello de luz desde el centro */
+      .to(glow,{opacity:1,scale:Math.max(W,H)/6,duration:1.1,ease:'power2.in'},'-=.45')
+      .to(seal,{opacity:0,duration:.5},'<.25')
+    /* 3. dos colibríes salen volando */
+      .set([b1,b2],{opacity:1,xPercent:-50,yPercent:-50,scale:.25},'-=.9')
+      .to(b1,{keyframes:[{x:-W*.22,y:-H*.12,scale:.8,rotation:-6,duration:.7,ease:'power2.out'},{x:-W*.30,y:-H*.24,duration:.5,ease:'sine.inOut'},{x:-W*.95,y:-H*.62,scale:1.05,duration:.9,ease:'power2.in'}]},'-=.9')
+      .to(b2,{keyframes:[{x:W*.22,y:-H*.04,scale:.75,rotation:6,duration:.75,ease:'power2.out'},{x:W*.28,y:-H*.18,duration:.5,ease:'sine.inOut'},{x:W*.95,y:-H*.55,scale:1,duration:.9,ease:'power2.in'}]},'<.08')
+      .to(flash,{opacity:1,duration:.55,ease:'power1.in'},'-=1.25')
+      .call(reveal,null,'-=.7');
+    if(prefersReduced){tl.progress(1);}
+  }
+  function reveal(){
+    if(scr.style.display==='none') return;
+    wrap.style.visibility='visible';
+    document.body.classList.remove('locked');
+    scr.style.display='none';
+    initAll();
+    gsap.to(flash,{opacity:0,duration:.9,ease:'power2.out'});
+  }
+  scr.addEventListener('click',open);
+  scr.addEventListener('touchend',open,{passive:false});
+}
+
+/* ═══════════ COUNTDOWN ═══════════ */
+(function(){
+  var TARGET=new Date('2027-07-03T17:00:00-05:00').getTime();
+  var ids=['cdDias','cdHoras','cdMins','cdSecs'],prev={};
+  function pad(n,w){return String(n).padStart(w||2,'0');}
+  function setv(id,v){
+    var el=document.getElementById(id);
+    if(prev[id]!==v){el.textContent=v;if(prev[id]!==undefined&&!prefersReduced){el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick');}prev[id]=v;}
+  }
+  function tick(){
+    var d=Math.max(0,TARGET-Date.now());
+    setv('cdDias',pad(Math.floor(d/86400000),3));setv('cdHoras',pad(Math.floor(d%86400000/3600000)));
+    setv('cdMins',pad(Math.floor(d%3600000/60000)));setv('cdSecs',pad(Math.floor(d%60000/1000)));
+    var box=document.getElementById('cdSecs').parentNode;box.classList.remove('glint');void box.offsetWidth;box.classList.add('glint');
+  }
+  tick();setInterval(tick,1000);
+})();
+
+/* ═══════════ HOTELES: lista ═══════════ */
+var hospIdx=0;
+function hotelDist(h){
+  var s='<span><svg viewBox="0 0 24 24"><path d="M5 17h14M6 17l1.5-6h9L18 17M8 11l1.5-4h5L16 11"/><circle cx="8" cy="18" r="1.6"/><circle cx="16" cy="18" r="1.6"/></svg>'+h.minRec+' min · '+h.kmRec+' km '+T('a la recepción','to reception')+'</span>';
+  s+='<span>'+h.minCer+' min · '+h.kmCer+' km '+T('a la ceremonia','to ceremony')+'</span>';
+  return s;
+}
+function renderHotels(){
+  var track=document.getElementById('hospTrack'),dots=document.getElementById('hospDots');
+  if(!track||!HOTELS.length) return;
+  track.innerHTML='';dots.innerHTML='';
+  HOTELS.forEach(function(h,i){
+    var sl=document.createElement('div');sl.className='hosp-slide';
+    sl.innerHTML='<div class="hosp-num">0'+(i+1)+'</div>'+
+      '<div class="hosp-photo"><img src="'+h.img+'" alt="'+h.name+'" loading="lazy"></div>'+
+      '<div class="hosp-type">'+T(h.type,h.typeEn)+'</div>'+
+      '<div class="hosp-name">'+h.name+'</div>'+
+      '<div class="hosp-addr">'+h.addr+'</div>'+
+      '<div class="hosp-dist">'+hotelDist(h)+'</div>'+
+      '<div class="hosp-btns">'+
+        '<a class="btn-ghost" href="'+h.maps+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>'+T('Ver en Maps','Open in Maps')+'</a>'+
+        '<a class="btn-ghost" href="'+h.web+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.9 6h-2.9a15.7 15.7 0 00-1.4-3.6A8 8 0 0118.9 8zM12 4c.8 1.2 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.8 1.9-4zM4.3 14a8.3 8.3 0 010-4h3.4a16.6 16.6 0 000 4H4.3zm.8 2h2.9c.3 1.3.8 2.5 1.4 3.6A8 8 0 015.1 16zM8 8H5.1a8 8 0 014.3-3.6C8.8 5.5 8.3 6.7 8 8zm4 12c-.8-1.2-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.8-1.9 4zm2.3-6H9.7a14.7 14.7 0 010-4h4.6a14.7 14.7 0 010 4zm.3 5.6c.6-1.1 1.1-2.3 1.4-3.6h2.9a8 8 0 01-4.3 3.6zM16.3 14a16.6 16.6 0 000-4h3.4a8.3 8.3 0 010 4h-3.4z"/></svg>'+T('Sitio web','Website')+'</a>'+
+      '</div>';
+    track.appendChild(sl);
+    var d=document.createElement('button');d.setAttribute('aria-label','Hotel '+(i+1));
+    d.addEventListener('click',function(){goHotel(i);});dots.appendChild(d);
+  });
+  goHotel(hospIdx);
+}
+function goHotel(i){
+  var track=document.getElementById('hospTrack');var n=HOTELS.length;
+  hospIdx=(i+n)%n;track.style.transform='translateX('+(-hospIdx*100)+'%)';
+  document.querySelectorAll('#hospDots button').forEach(function(d,k){d.classList.toggle('active',k===hospIdx);});
+}
+(function(){
+  document.querySelector('.hosp-arrow.prev').addEventListener('click',function(){goHotel(hospIdx-1);});
+  document.querySelector('.hosp-arrow.next').addEventListener('click',function(){goHotel(hospIdx+1);});
+  var track=document.getElementById('hospTrack'),sx=0,sy=0;
+  track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+  track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))goHotel(dx<0?hospIdx+1:hospIdx-1);},{passive:true});
+})();
+
+/* ═══════════ HOTELES: switch lista/mapa + MapLibre ═══════════ */
+(function(){
+  var sw=document.getElementById('hospSwitch'),ind=document.getElementById('hsInd'),flip=document.getElementById('hospFlip'),
+      btns=sw.querySelectorAll('button'),map=null,markers=[],chips=document.getElementById('mapChips');
+  function moveInd(b){ind.style.width=b.offsetWidth+'px';ind.style.transform='translateX('+(b.offsetLeft-5)+'px)';}
+  function setView(v){
+    btns.forEach(function(b){b.classList.toggle('on',b.dataset.view===v);if(b.dataset.view===v)moveInd(b);});
+    flip.classList.toggle('mapa',v==='mapa');
+    if(v==='mapa'){
+      var back=flip.querySelector('.flip-back'),front=flip.querySelector('.flip-front');
+      flip.querySelector('.flip-inner').style.height=Math.max(back.offsetHeight,front.offsetHeight)+'px';
+      if(!map) setTimeout(initMap,80); else setTimeout(function(){if(window.__fitHotels)window.__fitHotels();},80);
+    } else { flip.querySelector('.flip-inner').style.height=''; }
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){setView(b.dataset.view);});});
+  window.addEventListener('load',function(){moveInd(sw.querySelector('button.on'));});
+  setTimeout(function(){moveInd(sw.querySelector('button.on'));},300);
+  window.__hospInd=function(){moveInd(sw.querySelector('button.on'));};
+
+  function venueEl(key){
+    var el=document.createElement('div');el.className='mk-venue';
+    el.innerHTML='<div><svg viewBox="0 0 24 24"><path d="'+(key==='ceremonia'?'M11 2h2v3h3v2h-3v3l6 4v8h-6v-5h-2v5H5v-8l6-4V7H8V5h3z':'M12 2l2.4 5 5.6.8-4 3.9.9 5.5L12 14.6 7.1 17.2l.9-5.5-4-3.9L9.6 7z')+'"/></svg><span>'+T(VENUES[key].es,VENUES[key].en)+'</span></div><i></i>';
+    return el;
+  }
+  function selectHotel(i,fly){
+    markers.forEach(function(m,k){m.getElement().classList.toggle('on',k===i);});
+    chips.querySelectorAll('.map-chip').forEach(function(c,k){c.classList.toggle('on',k===i);});
+    var h=HOTELS[i];if(!h) return;
+    if(fly) map.flyTo({center:[h.lng,h.lat],zoom:15,speed:.9});
+    if(window.__popup) window.__popup.remove();
+    window.__popup=new maplibregl.Popup({offset:22,closeButton:false}).setLngLat([h.lng,h.lat])
+      .setHTML('<b>'+h.name+'</b><br>'+h.minRec+' min '+T('a la recepción','to reception')).addTo(map);
+  }
+  function renderChips(){
+    chips.innerHTML='';
+    HOTELS.forEach(function(h,i){
+      var c=document.createElement('button');c.type='button';c.className='map-chip';
+      c.innerHTML='<b>'+(i+1)+'</b><span>'+h.name+'<small>'+h.minRec+' min '+T('a la recepción','to reception')+'</small></span>';
+      c.addEventListener('click',function(){selectHotel(i,true);});chips.appendChild(c);
+    });
+  }
+  function recolor(){
+    var st=map.getStyle();if(!st) return;
+    st.layers.forEach(function(l){
+      var id=l.id,t=l.type;
+      try{
+        if(t==='background') map.setPaintProperty(id,'background-color','#f7f0f7');
+        else if(t==='fill'&&/water/.test(id)) map.setPaintProperty(id,'fill-color','#d9e6ef');
+        else if(t==='fill'&&/park|wood|grass|landcover|landuse/.test(id)) map.setPaintProperty(id,'fill-color','#e3edd6');
+        else if(t==='fill'&&/building/.test(id)) map.setPaintProperty(id,'fill-color','#efe4ee');
+        else if(t==='line'&&/highway|road|street|bridge|tunnel/.test(id)) map.setPaintProperty(id,'line-color','#ffffff');
+        else if(t==='symbol') map.setPaintProperty(id,'text-color','#5b5062');
+      }catch(e){}
+    });
+  }
+  function initMap(){
+    map=new maplibregl.Map({container:'hotelMap',style:'https://tiles.openfreemap.org/styles/positron',center:[VENUES.recepcion.lng,VENUES.recepcion.lat],zoom:13,cooperativeGestures:true,attributionControl:{compact:true}});
+    map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-right');
+    map.on('load',function(){
+      recolor();
+      ['ceremonia','recepcion'].forEach(function(k){new maplibregl.Marker({element:venueEl(k),anchor:k==='ceremonia'?'bottom-right':'bottom-left'}).setLngLat([VENUES[k].lng,VENUES[k].lat]).addTo(map);});
+      HOTELS.forEach(function(h,i){
+        var el=document.createElement('div');el.className='mk-hotel';el.textContent=i+1;
+        el.addEventListener('click',function(){selectHotel(i,false);});
+        markers.push(new maplibregl.Marker({element:el}).setLngLat([h.lng,h.lat]).addTo(map));
+      });
+      renderChips();
+      var b=new maplibregl.LngLatBounds();
+      b.extend([VENUES.ceremonia.lng,VENUES.ceremonia.lat]);b.extend([VENUES.recepcion.lng,VENUES.recepcion.lat]);
+      HOTELS.forEach(function(h){b.extend([h.lng,h.lat]);});
+      window.__fitHotels=function(){map.resize();map.fitBounds(b,{padding:{top:70,bottom:50,left:50,right:50},duration:0,maxZoom:15});};
+      window.__fitHotels();setTimeout(window.__fitHotels,400);
+    });
+    window.__mapLang=function(){renderChips();};
+  }
+})();
+
+/* ═══════════ DRESS CODE: carrusel de ideas (Fabiola) ═══════════ */
+(function(){
+  var viewer=document.getElementById('dcViewer');
+  if(!viewer) return;
+  document.body.appendChild(viewer);
+  var track=document.getElementById('dcvTrack'),head=document.getElementById('dcvHead'),cap=document.getElementById('dcvCap'),dots=document.getElementById('dcvDots'),close=document.getElementById('dcViewerClose');
+  var LOOKS={
+    caballeros:{es:'Caballeros',en:'Gentlemen',items:[
+      {src:'img/look-cab-1.png',es:'Traje de lino claro, sin corbata',en:'Light linen suit, no tie'},
+      {src:'img/look-cab-2.png',es:'Camisa manga larga y pantalón de lino',en:'Long-sleeve shirt and linen trousers'}]},
+    damas:{es:'Damas',en:'Ladies',items:[
+      {src:'img/look-dama-1.png',es:'Vestido largo en tono pastel',en:'Long pastel dress'},
+      {src:'img/look-dama-2.png',es:'Vestido largo en tono pastel',en:'Long pastel dress'},
+      {src:'img/look-dama-3.png',es:'Vestido largo en tono pastel',en:'Long pastel dress'},
+      {src:'img/look-dama-4.png',es:'Vestido largo en tono pastel',en:'Long pastel dress'}]}
+  };
+  var items=[],idx=0,last=null;
+  function render(){track.style.transform='translateX('+(-idx*100)+'%)';cap.textContent=T(items[idx].es,items[idx].en)+'  ·  '+(idx+1)+' / '+items.length;[].forEach.call(dots.children,function(d,i){d.classList.toggle('on',i===idx);});}
+  function go(i){idx=(i+items.length)%items.length;render();}
+  function open(key){
+    var L=LOOKS[key];if(!L) return;items=L.items;idx=0;last=document.activeElement;
+    head.textContent=T(L.es,L.en);track.innerHTML='';dots.innerHTML='';
+    items.forEach(function(it,i){
+      var sl=document.createElement('figure');sl.className='dcv-slide';
+      sl.innerHTML='<div class="dcv-frame"><div class="dcv-mat"><img alt=""></div></div>';
+      var im=sl.querySelector('img');im.src=it.src;im.alt=T(L.es,L.en)+' — '+T(it.es,it.en);track.appendChild(sl);
+      var d=document.createElement('button');d.type='button';d.className='dcv-dot';d.setAttribute('aria-label','Idea '+(i+1));
+      d.addEventListener('click',function(){go(i);});dots.appendChild(d);
+    });
+    render();viewer.removeAttribute('hidden');requestAnimationFrame(function(){viewer.classList.add('on');});
+    document.body.style.overflow='hidden';close.focus();
+  }
+  function hide(){viewer.classList.remove('on');document.body.style.overflow='';setTimeout(function(){viewer.setAttribute('hidden','');},300);if(last&&last.focus)last.focus();}
+  document.querySelectorAll('.dc-look').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open(b.dataset.look);});});
+  close.addEventListener('click',hide);
+  document.getElementById('dcvPrev').addEventListener('click',function(e){e.stopPropagation();go(idx-1);});
+  document.getElementById('dcvNext').addEventListener('click',function(e){e.stopPropagation();go(idx+1);});
+  viewer.addEventListener('click',function(e){if(e.target===viewer)hide();});
+  document.addEventListener('keydown',function(e){if(!viewer.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')go(idx-1);if(e.key==='ArrowRight')go(idx+1);});
+  var x0=null;
+  track.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>40)go(idx+(dx<0?1:-1));},{passive:true});
+})();
+
+/* ═══════════ REGALOS: sobre interactivo (Faustino) ═══════════ */
+(function(){
+  var btn=document.getElementById('giftEnv'),hint=document.getElementById('giftHint');
+  function toggle(){var o=btn.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false');hint.classList.toggle('gone',o);}
+  btn.addEventListener('click',toggle);
+})();
+
+/* ═══════════ ÁLBUM: QR con blur hasta el día ═══════════ */
+(function(){
+  var box=document.querySelector('.album-qr');if(!box) return;
+  var p=box.dataset.fecha.split('-');
+  if(new Date()<new Date(+p[0],+p[1]-1,+p[2],0,0,0)) box.classList.add('bloqueado');
+})();
+
+/* ═══════════ MÚSICA ═══════════ */
+(function(){
+  var a=document.getElementById('music'),btn=document.getElementById('music-btn');
+  a.volume=.5;
+  a.addEventListener('play',function(){btn.classList.add('is-playing');});
+  a.addEventListener('pause',function(){btn.classList.remove('is-playing');});
+  window._startAudio=function(){btn.classList.add('is-ready');if(!a.paused) return;var p=a.play();if(p&&p.catch)p.catch(function(){});};
+  btn.addEventListener('click',function(e){e.stopPropagation();if(a.paused){var p=a.play();if(p&&p.catch)p.catch(function(){});}else a.pause();});
+})();
+
+/* ═══════════ MENÚ FLOTANTE ═══════════ */
+var navSecs=[].slice.call(document.querySelectorAll('[data-nav]'));
+var curSec='hero';
+function buildMenu(){
+  var links=document.getElementById('npLinks'),list=document.getElementById('fmList');
+  links.querySelectorAll('.np-link').forEach(function(a){a.remove();});
+  list.innerHTML='';
+  navSecs.forEach(function(s,i){
+    var label=T(s.dataset.nav,s.dataset.navEn);
+    if(s.id!=='hero'){
+      var a=document.createElement('a');a.className='np-link';a.href='#'+s.id;a.textContent=label;a.dataset.id=s.id;links.appendChild(a);
+    }
+    var li=document.createElement('li');
+    li.innerHTML='<a href="#'+s.id+'" data-id="'+s.id+'"><span>'+String(i+1).padStart(2,'0')+'</span>'+label+'</a>';
+    list.appendChild(li);
+  });
+  list.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();closeMenu(function(){goTo(a.dataset.id);});});});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();goTo(a.dataset.id);});});
+  markNav(curSec);
+}
+function goTo(id){var el=document.getElementById(id);if(!el)return;window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-10,behavior:'smooth'});}
+function markNav(id){
+  curSec=id;
+  document.querySelectorAll('.np-link,.fm-list a').forEach(function(a){a.classList.toggle('cur',a.dataset.id===id);});
+  var on=document.querySelector('.np-link.cur'),ind=document.getElementById('npInd');
+  if(on){ind.style.opacity=1;ind.style.width=on.offsetWidth+'px';ind.style.transform='translateX('+on.offsetLeft+'px)';}else ind.style.opacity=0;
+}
+var fm=document.getElementById('fullmenu');
+function openMenu(){
+  fm.style.visibility='visible';fm.setAttribute('aria-hidden','false');
+  gsap.fromTo(fm,{clipPath:'circle(0% at 85% 95%)'},{clipPath:'circle(150% at 85% 95%)',duration:prefersReduced?.01:.6,ease:'power2.out'});
+  gsap.fromTo('#fmList li',{y:24,opacity:0},{y:0,opacity:1,duration:.5,stagger:.07,delay:.15,ease:'power3.out'});
+}
+function closeMenu(cb){
+  gsap.to(fm,{clipPath:'circle(0% at 85% 95%)',duration:prefersReduced?.01:.5,ease:'power2.in',onComplete:function(){fm.style.visibility='hidden';fm.setAttribute('aria-hidden','true');if(cb)cb();}});
+}
+document.getElementById('menuBtn').addEventListener('click',openMenu);
+document.getElementById('fmClose').addEventListener('click',function(){closeMenu();});
+document.getElementById('shareBtn').addEventListener('click',function(){
+  var url='https://boda-tyler-y-lina-rutherford.vercel.app';
+  if(navigator.share){navigator.share({title:'Tyler & Lina',text:T('¡Nos casamos! 3 de julio de 2027','We are getting married! July 3, 2027'),url:url}).catch(function(){});}
+  else{try{navigator.clipboard.writeText(url);}catch(e){}alert(T('Enlace copiado','Link copied'));}
+});
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)markNav(e.target.id);});},{rootMargin:'-45% 0px -50% 0px'});
+  navSecs.forEach(function(s){io.observe(s);});
+})();
+
+/* ═══════════ RSVP · Panel de Invitados — X pases ═══════════ */
+(function(){
+  var PANEL_API='https://panel-invitados.vercel.app/api/confirmar';
+  var RSVP_URL='https://boda-tyler-y-lina-rutherford.vercel.app';
+  var DEADLINE=new Date('2027-04-02T23:59:59-05:00'); /* 2 abr 2027, hora de Colombia */
+  var frozen=Date.now()>DEADLINE.getTime();
+  var ERR='#a3311f';
+  var DIET_SEP=' · Dieta: ';
+  function decodeInvite(tok){
+    try{var b64=tok.replace(/-/g,'+').replace(/_/g,'/');while(b64.length%4)b64+='=';
+      var bin=atob(b64),bytes=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
+      var p=new TextDecoder().decode(bytes).split('|');return{para:(p[0]||'').trim(),pases:parseInt(p[1],10)||1};}catch(e){return null;}
+  }
+  var qp=new URLSearchParams(location.search),hp=new URLSearchParams(location.hash.replace(/^#/,''));
+  var urlPara='',rawP=1,token=qp.get('i')||hp.get('i');
+  if(token){var dec=decodeInvite(token);if(dec&&dec.para){urlPara=dec.para;rawP=dec.pases;}}
+  if(!urlPara){urlPara=(qp.get('para')||hp.get('para')||'').trim();rawP=parseInt(qp.get('pases')||hp.get('pases'),10);}
+  var pasesAsignados=(isNaN(rawP)||rawP<1||rawP>20)?1:rawP;
+  var rsvpChoice=null,savedNames=[],pasesAUsar=1,lastMsg=null,graciasState=null;
+
+  var $=function(id){return document.getElementById(id);};
+  var nameEl=$('rsvp-guest'),forEl=$('rsvp-for'),pasesNumEl=$('rsvp-pases-num'),pasesDisp=$('rsvp-pases-display'),fieldsEl=$('rsvp-fields'),
+      bandejaEl=$('rsvp-bandeja'),graciasEl=$('rsvp-gracias'),gTitleEl=$('rsvp-gracias-title'),gSubEl=$('rsvp-gracias-sub'),editarBtn=$('rsvp-editar-btn'),
+      btnYes=$('btnYes'),btnNo=$('btnNo'),btnConf=$('rsvp-confirm-btn'),btnText=$('rsvp-btn-text'),feedEl=$('rsvp-feedback'),
+      contWrap=$('rsvp-contador-wrap'),contNota=$('rsvp-contador-nota'),contValor=$('rsvp-contador-valor'),contPie=$('rsvp-contador-pie'),
+      btnMenos=$('rsvp-menos'),btnMas=$('rsvp-mas'),dietWrap=$('rsvp-diet'),dietEl=$('rsvpDiet');
+  var btnState='confirm';
+  function paintBtn(){btnText.textContent=btnState==='update'?T('Actualizar respuesta','Update my answer'):btnState==='sending'?T('Enviando…','Sending…'):btnState==='frozen'?T('Fecha límite alcanzada','RSVP closed'):T('Confirmar asistencia','Confirm attendance');}
+  function say(es,en,color){
+    lastMsg=es?[es,en,color]:null;
+    if(!es){feedEl.style.display='none';feedEl.textContent='';return;}
+    feedEl.style.display='block';feedEl.style.color=color||'var(--gold-deep)';feedEl.textContent=T(es,en);
+  }
+  function paintHeader(){
+    pasesNumEl.textContent=pasesAsignados;
+    if(urlPara){pasesDisp.style.display='flex';nameEl.textContent=urlPara;nameEl.style.display='block';forEl.style.display='block';}
+  }
+  paintHeader();
+  function renderFields(){
+    fieldsEl.innerHTML='';
+    for(var i=0;i<pasesAUsar;i++){
+      var inp=document.createElement('input');inp.type='text';inp.className='rsvp-input';
+      inp.placeholder=pasesAUsar===1?T('Tu nombre completo','Your full name'):T('Nombre completo del invitado ','Full name of guest ')+(i+1);
+      inp.autocomplete='off';inp.maxLength=60;inp.disabled=frozen;inp.value=savedNames[i]||'';
+      (function(idx){inp.addEventListener('input',function(){savedNames[idx]=this.value;this.classList.remove('rsvp-input-falta');});})(i);
+      fieldsEl.appendChild(inp);
+    }
+  }
+  function pintaContador(){
+    var ver=rsvpChoice==='yes'&&pasesAsignados>1;contWrap.style.display=ver?'block':'none';if(!ver)return;
+    contValor.textContent=pasesAUsar;
+    contNota.textContent=T('Tienes '+pasesAsignados+' pases reservados. Aumenta el número de pases que vayas a ocupar.','You have '+pasesAsignados+' passes reserved. Increase the number of passes you will use.');
+    contPie.textContent=pasesAUsar>=pasesAsignados?T('Usarás todos tus pases','Using all your passes'):T(pasesAUsar+' de '+pasesAsignados+' pases',pasesAUsar+' of '+pasesAsignados+' passes');
+    btnMenos.disabled=frozen||pasesAUsar<=1;btnMas.disabled=frozen||pasesAUsar>=pasesAsignados;
+  }
+  function setPases(n){if(frozen)return;var v=Math.max(1,Math.min(pasesAsignados,n));if(v===pasesAUsar)return;pasesAUsar=v;pintaContador();renderFields();say('');}
+  btnMenos.addEventListener('click',function(){setPases(pasesAUsar-1);});
+  btnMas.addEventListener('click',function(){setPases(pasesAUsar+1);});
+  function selectRsvp(choice){
+    rsvpChoice=choice;
+    btnYes.classList.toggle('rsvp-toggle-selected-yes',choice==='yes');btnNo.classList.toggle('rsvp-toggle-selected-no',choice==='no');
+    if(choice==='yes'){renderFields();fieldsEl.style.display='flex';dietWrap.style.display='block';}
+    else{fieldsEl.style.display='none';fieldsEl.innerHTML='';dietWrap.style.display='none';}
+    pintaContador();
+  }
+  btnYes.addEventListener('click',function(){if(!frozen){selectRsvp('yes');say('');}});
+  btnNo.addEventListener('click',function(){if(!frozen){selectRsvp('no');say('');}});
+  function mostrarGracias(estado,nombres){
+    graciasState=[estado,nombres];
+    var lista=(nombres||[]).filter(function(n){return n&&String(n).trim();});
+    if(estado==='confirmado'){
+      gTitleEl.textContent=T('¡Gracias por confirmar!','Thank you for confirming!');
+      gSubEl.textContent=lista.length===1?T('Te esperamos, '+lista[0]+'.','We look forward to seeing you, '+lista[0]+'.'):T('Confirmamos '+lista.length+' lugares: ','We confirmed '+lista.length+' seats: ')+lista.join(', ')+'.';
+    }else{
+      gTitleEl.textContent=T('Gracias por avisarnos','Thank you for letting us know');
+      gSubEl.textContent=T('Lamentamos que no puedas acompañarnos. Te vamos a extrañar.','We are sorry you cannot join us. We will miss you.');
+    }
+    bandejaEl.style.display='none';graciasEl.style.display='';editarBtn.disabled=frozen;say('');
+  }
+  function abrirBandeja(){graciasState=null;graciasEl.style.display='none';bandejaEl.style.display='';say('');}
+  editarBtn.addEventListener('click',function(){if(!frozen)abrirBandeja();});
+  function applyFreeze(){
+    if(!frozen)return;
+    btnYes.disabled=btnNo.disabled=btnConf.disabled=editarBtn.disabled=true;dietEl.disabled=true;
+    fieldsEl.querySelectorAll('.rsvp-input').forEach(function(i){i.disabled=true;});
+    btnMenos.disabled=btnMas.disabled=true;btnState='frozen';paintBtn();
+    say('La fecha para confirmar asistencia ha pasado.','The RSVP deadline has passed.');
+  }
+  window.__rsvpLang=function(){paintBtn();pintaContador();if(rsvpChoice==='yes'){var keep=savedNames.slice();renderFields();savedNames=keep;}
+    if(lastMsg)say(lastMsg[0],lastMsg[1],lastMsg[2]);if(graciasState)mostrarGracias(graciasState[0],graciasState[1]);};
+  paintBtn();
+  if(urlPara){
+    btnYes.disabled=btnNo.disabled=true;
+    fetch(PANEL_API+'?nombre='+encodeURIComponent(urlPara)+'&url_boda='+encodeURIComponent(RSVP_URL))
+      .then(function(r){return r.json();})
+      .then(function(resp){
+        var d=resp&&resp.invitado;
+        if(resp&&resp.ok&&!d){btnConf.disabled=true;say('No encontramos tu invitación. Pide a los novios que te envíen tu enlace de nuevo.','We could not find your invitation. Please ask the couple to send you your link again.',ERR);applyFreeze();return;}
+        if(d&&typeof d.pases==='number'&&d.pases>0&&d.pases<=20)pasesAsignados=d.pases;
+        paintHeader();
+        if(!frozen){btnYes.disabled=btnNo.disabled=false;}
+        if(d&&(d.estado==='confirmado'||d.estado==='declino')){
+          var raw=(d.nombres_confirmados||[]).slice();
+          /* la dieta viaja pegada al primer nombre: "Ana López · Dieta: sin gluten" */
+          if(raw[0]&&raw[0].indexOf(DIET_SEP)>-1){var parts=raw[0].split(DIET_SEP);raw[0]=parts[0];dietEl.value=parts.slice(1).join(DIET_SEP);}
+          savedNames=raw;
+          pasesAUsar=Math.min(pasesAsignados,Math.max(1,savedNames.length));
+          selectRsvp(d.estado==='confirmado'?'yes':'no');
+          btnState='update';paintBtn();
+          mostrarGracias(d.estado,savedNames);
+        }
+        applyFreeze();
+      })
+      .catch(function(){if(!frozen){btnYes.disabled=btnNo.disabled=false;}applyFreeze();});
+  }else{
+    btnConf.disabled=true;
+    say('Para confirmar necesitas abrir el enlace personalizado que te enviamos. Ese enlace lleva tu nombre y tus pases.','To RSVP, please open the personal link we sent you. It includes your name and passes.');
+    applyFreeze();
+  }
+  function confetti(){
+    if(prefersReduced)return;
+    var cols=['#D4AF37','#72954b','#f3e9f4','#F7E7CE','#f1c9fe','#cce8b5'];
+    for(var i=0;i<60;i++){
+      var p=document.createElement('div');p.className='confetti-p';p.style.left=(Math.random()*100)+'vw';p.style.background=cols[i%cols.length];document.body.appendChild(p);
+      gsap.to(p,{y:window.innerHeight+40,x:(Math.random()-.5)*200,rotation:Math.random()*720,duration:2+Math.random()*1.6,ease:'power1.in',delay:Math.random()*.4,onComplete:(function(el){return function(){el.remove();};})(p)});
+    }
+  }
+  btnConf.addEventListener('click',function(){
+    if(frozen||btnConf.disabled)return;
+    if(!rsvpChoice){say('Por favor selecciona si asistirás o no.','Please choose whether you will attend.',ERR);return;}
+    var nombres=[];
+    if(rsvpChoice==='yes'){
+      var inputs=fieldsEl.querySelectorAll('.rsvp-input');
+      for(var i=0;i<inputs.length;i++){var v=inputs[i].value.trim();if(v)nombres.push(v);}
+      if(!nombres.length){say('Por favor escribe al menos un nombre.','Please write at least one name.',ERR);if(inputs[0])inputs[0].focus();return;}
+      var doble=null;
+      for(var k=0;k<inputs.length;k++){var malo=/[&\/+,]|\s(y|and)\s/i.test(inputs[k].value.trim());inputs[k].classList.toggle('rsvp-input-falta',malo);if(malo&&!doble)doble=inputs[k];}
+      if(doble){say('Escribe un solo nombre en cada campo. Si vienen más personas, sube el contador y escribe cada nombre en su propio campo.','Write one name per field. If more people are coming, increase the counter and write each name in its own field.',ERR);doble.focus();return;}
+      if(nombres.length<pasesAUsar){
+        var faltan=pasesAUsar-nombres.length,primero=null;
+        for(var j=0;j<inputs.length;j++){if(!inputs[j].value.trim()){inputs[j].classList.add('rsvp-input-falta');if(!primero)primero=inputs[j];}}
+        say('Elegiste '+pasesAUsar+' pases pero escribiste '+nombres.length+' nombre'+(nombres.length===1?'':'s')+'. Escribe '+(faltan===1?'el nombre que falta':'los '+faltan+' nombres que faltan')+' o baja el contador a los pases que vas a utilizar.',
+            'You chose '+pasesAUsar+' passes but wrote '+nombres.length+' name'+(nombres.length===1?'':'s')+'. Write the missing name'+(faltan===1?'':'s')+' or lower the counter.',ERR);
+        if(primero)primero.focus();return;
+      }
+    }
+    var estadoFinal=rsvpChoice==='yes'?'confirmado':'declino';
+    var enviar=nombres.slice();
+    var diet=(dietEl.value||'').trim().replace(/\s+/g,' ');
+    if(estadoFinal==='confirmado'&&diet) enviar[0]=enviar[0]+DIET_SEP+diet;
+    btnState='sending';paintBtn();btnConf.disabled=true;say('');
+    fetch(PANEL_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      nombre:urlPara,url_boda:RSVP_URL,estado:estadoFinal,
+      pases_confirmados:estadoFinal==='confirmado'?nombres.length:0,
+      nombres_confirmados:estadoFinal==='confirmado'?enviar:[]
+    })})
+    .then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d};}).catch(function(){return{ok:r.ok,d:null};});})
+    .then(function(res){
+      btnConf.disabled=false;
+      if(res.ok&&res.d&&res.d.ok){btnState='update';paintBtn();mostrarGracias(estadoFinal,nombres);if(estadoFinal==='confirmado')confetti();return;}
+      btnState='confirm';paintBtn();
+      var err=res.d&&res.d.error;
+      if(err==='no_match')say('No pudimos identificar tu invitación. Abre el enlace personalizado que te enviamos; ese es el único que registra tu confirmación.','We could not identify your invitation. Please open the personal link we sent you.',ERR);
+      else if(err==='invitacion_borrada')say('Esta invitación ya no está activa. Por favor contacta a los novios para que te envíen un enlace nuevo.','This invitation is no longer active. Please contact the couple for a new link.',ERR);
+      else say('Hubo un problema al enviar. Inténtalo de nuevo.','Something went wrong. Please try again.',ERR);
+    })
+    .catch(function(){btnConf.disabled=false;btnState='confirm';paintBtn();say('Sin conexión. Verifica tu internet e inténtalo de nuevo.','No connection. Check your internet and try again.',ERR);});
+  });
+})();
+
+/* ═══════════ MOMENTOS: rueda 3D (Eliud) ═══════════ */
+(function(){
+  var ring=document.getElementById('wheel');
+  var fotos=['foto1.jpg','foto2.jpg','foto3.jpg','foto4.jpg','foto5.jpg','foto6.jpg'];
+  var list=fotos.concat(fotos);
+  list.forEach(function(f){var d=document.createElement('div');d.className='wheel-item';d.innerHTML='<img src="'+f+'" alt="Tyler y Lina" loading="lazy">';ring.appendChild(d);});
+  var cards=ring.querySelectorAll('.wheel-item'),n=cards.length;
+  var radius=Math.round((150*n)/(2*Math.PI))+20;
+  var rot=0,vel=0,isDrag=false,startX=0,startRot=0,lastX=0,rafId=null,autoSpin=null;
+  cards.forEach(function(c,i){c.style.transform='rotateY('+(360/n*i)+'deg) translateZ('+radius+'px)';});
+  function setRot(r){rot=r;gsap.set(ring,{rotateY:rot});}
+  function inertia(){if(Math.abs(vel)<.05){vel=0;return;}vel*=.94;setRot(rot+vel);rafId=requestAnimationFrame(inertia);}
+  function startAuto(){if(prefersReduced||autoSpin)return;autoSpin=setInterval(function(){if(!isDrag&&Math.abs(vel)<.05)setRot(rot+.18);},16);}
+  function stopAuto(){if(autoSpin){clearInterval(autoSpin);autoSpin=null;}}
+  window.__wheelStart=function(){
+    ScrollTrigger.create({trigger:'.wheel-stage',start:'top 85%',end:'bottom top',onEnter:startAuto,onEnterBack:startAuto,onLeave:stopAuto,onLeaveBack:stopAuto});
+    gsap.fromTo(cards,{opacity:0,scale:.4},{opacity:1,scale:1,duration:1,stagger:.06,ease:'back.out(1.4)',immediateRender:false,scrollTrigger:{trigger:'.wheel-stage',start:'top 85%'}});
+  };
+  function down(x){cancelAnimationFrame(rafId);stopAuto();isDrag=true;vel=0;startX=x;startRot=rot;lastX=x;ring.classList.add('dragging');}
+  function move(x){if(!isDrag)return;vel=(x-lastX)*.5;lastX=x;setRot(startRot+(x-startX)*.45);}
+  function up(){if(!isDrag)return;isDrag=false;ring.classList.remove('dragging');rafId=requestAnimationFrame(inertia);setTimeout(startAuto,2500);}
+  ring.addEventListener('mousedown',function(e){down(e.clientX);});
+  window.addEventListener('mousemove',function(e){move(e.clientX);});
+  window.addEventListener('mouseup',up);
+  ring.addEventListener('touchstart',function(e){down(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchmove',function(e){move(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchend',up);
+})();
+
+/* ═══════════ CAPA DE VIDA (scroll) ═══════════ */
+var __inited=false;
+function initAll(){
+  if(__inited) return;__inited=true;
+  var nav=document.getElementById('navpill');nav.classList.add('on');
+  buildMenu();
+  if(window.__hospInd) setTimeout(window.__hospInd,60);
+  var R=prefersReduced;
+  /* reveal genérico — parte de visible: si el trigger no dispara, nada queda oculto */
+  document.querySelectorAll('.rv').forEach(function(el){
+    gsap.from(el,{y:R?0:30,opacity:0,duration:R?.4:.9,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+  });
+  /* títulos: reveal por palabras */
+  document.querySelectorAll('.heading.split').forEach(function(h){
+    var html=h.innerHTML;
+    if(!h.dataset.splitDone){h.dataset.splitDone=1;}
+    var words=h.textContent.trim().split(/\s+/);
+    h.innerHTML=words.map(function(w){return '<span class="w">'+w+'</span>';}).join(' ');
+    var obs=new MutationObserver(function(){});obs.disconnect();
+    gsap.from(h.querySelectorAll('.w'),{y:R?0:26,opacity:0,rotation:R?0:4,duration:.8,stagger:.09,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:h,start:'top 88%',once:true}});
+  });
+  /* hero parallax */
+  if(!R){
+    gsap.to('#heroMedia',{yPercent:18,scale:1.08,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+    gsap.to('#heroContent',{y:-90,opacity:0,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'70% top',scrub:true}});
+    gsap.from('#heroContent > *',{y:30,opacity:0,duration:1.1,stagger:.15,ease:'power3.out',delay:.1});
+  }
+  /* countdown boxes */
+  gsap.from('.cd-box',{y:R?0:30,opacity:0,rotationX:R?0:-40,duration:.8,stagger:.1,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:'.cd-grid',start:'top 88%',once:true}});
+  /* divisores que se dibujan */
+  document.querySelectorAll('.sec-divider path.draw').forEach(function(p){
+    var L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=R?0:L;
+    if(!R) gsap.to(p,{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:p,start:'top 95%',end:'top 55%',scrub:true}});
+  });
+  document.querySelectorAll('.orn-line').forEach(function(l){gsap.from(l,{scaleX:0,duration:1.1,ease:'power2.out',immediateRender:false,scrollTrigger:{trigger:l,start:'top 92%',once:true}});});
+  /* ubicaciones: entran, levitan desfasadas y se elevan al tocar */
+  document.querySelectorAll('.loc-card').forEach(function(c,i){
+    gsap.from(c,{y:R?0:50,opacity:0,duration:1,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:c,start:'top 90%',once:true}});
+    if(!R) gsap.to(c,{y:'+=6',duration:2.8,ease:'sine.inOut',yoyo:true,repeat:-1,delay:i*1.4});
+    function lift(){c.classList.add('lift');gsap.to(c,{rotationX:4,rotationY:i?-4:4,scale:1.02,transformPerspective:800,duration:.4});}
+    function drop(){c.classList.remove('lift');gsap.to(c,{rotationX:0,rotationY:0,scale:1,duration:.5});}
+    c.addEventListener('mouseenter',lift);c.addEventListener('mouseleave',drop);
+    c.addEventListener('touchstart',function(){lift();setTimeout(drop,900);},{passive:true});
+  });
+  /* dress code: figuras entran */
+  gsap.from('.dc-fig',{y:R?0:40,opacity:0,duration:1,stagger:.2,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:'.dc-figs',start:'top 90%',once:true}});
+  gsap.from('.dc-look',{x:R?0:-30,opacity:0,duration:.8,stagger:.15,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:'.dc-looks',start:'top 90%',once:true}});
+  gsap.from('.dc-swatch-dot',{scale:0,opacity:0,duration:.5,stagger:.08,ease:'back.out(2.5)',immediateRender:false,scrollTrigger:{trigger:'.dc-swatches',start:'top 92%',once:true}});
+  /* galería: clip-path + parallax */
+  document.querySelectorAll('.clipr').forEach(function(f){
+    gsap.from(f,{clipPath:R?'inset(0 0 0 0)':'inset(100% 0 0 0)',duration:1.2,ease:'power3.inOut',immediateRender:false,scrollTrigger:{trigger:f,start:'top 90%',once:true}});
+  });
+  if(!R) document.querySelectorAll('.plx').forEach(function(img){
+    var s=parseFloat(img.dataset.speed)||-5;
+    gsap.fromTo(img,{yPercent:s<0?-8:0},{yPercent:s<0?0:-8,ease:'none',scrollTrigger:{trigger:img.parentNode,start:'top bottom',end:'bottom top',scrub:true}});
+  });
+  if(window.__wheelStart) window.__wheelStart();
+  /* Huila: tarjetas alternan */
+  document.querySelectorAll('.huila-card').forEach(function(c,i){
+    gsap.from(c,{x:R?0:(i%2?40:-40),opacity:0,duration:1,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:c,start:'top 90%',once:true}});
+  });
+  /* hospedaje: entra de costado con giro que se endereza */
+  gsap.from('#hospFlip',{x:R?0:-60,rotation:R?0:-3,opacity:0,duration:1.1,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:'#hospFlip',start:'top 90%',once:true}});
+  gsap.from('.hosp-alert',{scale:R?1:.94,opacity:0,duration:.8,ease:'back.out(1.6)',immediateRender:false,scrollTrigger:{trigger:'.hosp-alert',start:'top 90%',once:true}});
+  /* niños */
+  gsap.from('.kids-ico',{scale:0,rotation:-30,duration:.8,ease:'back.out(2)',immediateRender:false,scrollTrigger:{trigger:'.kids-card',start:'top 88%',once:true}});
+  /* regalos: destello al entrar */
+  ScrollTrigger.create({trigger:'#giftEnv',start:'top 80%',once:true,onEnter:function(){document.getElementById('giftEnv').classList.add('go');}});
+  /* rsvp */
+  gsap.from('.rsvp',{y:R?0:40,scale:R?1:.97,opacity:0,duration:1,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:'.rsvp',start:'top 90%',once:true}});
+  var hint=document.getElementById('scrollHint');
+  if(hint){var hide=function(){hint.classList.add('hidden');window.removeEventListener('scroll',hide);};window.addEventListener('scroll',hide,{passive:true});}
+  ScrollTrigger.refresh();
+}
+
+/* idioma guardado o del navegador */
+(function(){
+  var l=null;try{l=localStorage.getItem('tl-lang');}catch(e){}
+  if(!l) l=(navigator.language||'es').toLowerCase().indexOf('es')===0?'es':'en';
+  if(new URLSearchParams(location.search).get('lang')) l=new URLSearchParams(location.search).get('lang')==='en'?'en':'es';
+  if(l==='en') applyLang('en'); else {buildMenu();renderHotels();}
+})();
+initEnvelope();
+</script>
+</body>
+</html>
