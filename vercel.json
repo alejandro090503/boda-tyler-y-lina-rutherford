@@ -1,10 +1,14 @@
 {
   "redirects": [
-    { "source": "/album", "destination": "https://panel-invitados.vercel.app/subir/boda-tyler-y-lina-rutherford", "permanent": false }
+    {
+      "source": "/album",
+      "destination": "https://panel-invitados.vercel.app/subir/boda-tyler-y-lina-rutherford",
+      "permanent": false
+    }
   ],
   "rewrites": [
     {
-      "source": "/((?!.*\.[a-z0-9]{1,5}$).*)",
+      "source": "/((?!.*\\.[a-z0-9]{1,5}$).*)",
       "destination": "/index.html"
     }
   ]
