@@ -9,8 +9,8 @@
 <meta property="og:url" content="https://boda-tyler-y-lina-rutherford.vercel.app/">
 <meta property="og:title" content="Tyler &amp; Lina · 3 · Julio · 2027">
 <meta property="og:description" content="Nos casamos y queremos que estés ahí. Neiva, Huila — Sábado 3 de julio de 2027 · Abre tu invitación">
-<meta property="og:image" content="https://boda-tyler-y-lina-rutherford.vercel.app/og-image.jpg?v=3">
-<meta property="og:image:secure_url" content="https://boda-tyler-y-lina-rutherford.vercel.app/og-image.jpg?v=3">
+<meta property="og:image" content="https://boda-tyler-y-lina-rutherford.vercel.app/og-image.jpg?v=4">
+<meta property="og:image:secure_url" content="https://boda-tyler-y-lina-rutherford.vercel.app/og-image.jpg?v=4">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tyler &amp; Lina · 3 · Julio · 2027">
 <meta name="twitter:description" content="Nos casamos y queremos que estés ahí. Neiva, Huila — Sábado 3 de julio de 2027">
-<meta name="twitter:image" content="https://boda-tyler-y-lina-rutherford.vercel.app/og-image.jpg?v=3">
+<meta name="twitter:image" content="https://boda-tyler-y-lina-rutherford.vercel.app/og-image.jpg?v=4">
 <meta name="theme-color" content="#f6ece8">
 <script>if('scrollRestoration' in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -811,7 +811,7 @@ img{max-width:100%}
 <!-- ═══════════ SOBRE ═══════════ -->
 <div id="envelope-screen" role="button" aria-label="Abrir invitación">
   <img class="op-poster" id="opPoster" src="img/apertura-poster.webp" alt="Tyler &amp; Lina · Neiva, Huila · 03·07·2027">
-  <video class="op-video" id="opVideo" muted playsinline preload="auto" poster="img/apertura-poster.webp" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/boda-tyler-y-lina-rutherford/apertura.mp4"></video>
+  <video class="op-video" id="opVideo" muted playsinline preload="auto" poster="img/apertura-poster.webp" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/boda-tyler-y-lina-rutherford/apertura-sobre.mp4"></video>
   <div class="env-tap" id="envTap" data-en="Tap to open">Toca para abrir</div>
 </div>
 <div id="env-flash"></div>
@@ -1285,7 +1285,7 @@ function initEnvelope(){
   var scr=document.getElementById('envelope-screen'),vid=document.getElementById('opVideo'),poster=document.getElementById('opPoster'),
       tap=document.getElementById('envTap'),flash=document.getElementById('env-flash'),
       wrap=document.querySelector('.wrap'),done=false,revealed=false,fallback=null;
-  var REVEAL_AT=7.2; /* segundo en que el video ya quedó en crema */
+  var REVEAL_AT=6.4; /* segundo en que el video ya quedó en crema */
   gsap.fromTo(poster,{scale:1.04},{scale:1,duration:2.4,ease:'power2.out'});
   gsap.from(tap,{opacity:0,y:8,duration:.9,delay:.8,ease:'power2.out'});
 
@@ -1299,7 +1299,7 @@ function initEnvelope(){
     gsap.to(tap,{opacity:0,duration:.3});
     if(prefersReduced){finish();return;}
     var p;
-    try{vid.playbackRate=1.15;p=vid.play();}catch(err){finish();return;}
+    try{vid.playbackRate=1;p=vid.play();}catch(err){finish();return;}
     if(p&&p.then){p.then(function(){gsap.to(poster,{opacity:0,duration:.25,delay:.12});}).catch(finish);}
     else gsap.to(poster,{opacity:0,duration:.25,delay:.12});
     vid.addEventListener('timeupdate',function(){if(vid.currentTime>=REVEAL_AT)finish();});
