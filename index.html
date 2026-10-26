@@ -542,10 +542,10 @@ img{max-width:100%}
 .dc-dance-cap i{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
 .dc-rules li{font-family:var(--sans);font-size:16.5px}
 .dc-swatches{display:flex;justify-content:center;gap:14px;margin:18px auto 0;flex-wrap:nowrap}
-.sw{display:flex;flex-direction:column;align-items:center;gap:8px;width:56px;position:relative}
-.sw small{font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--ink);line-height:1.2}
-.sw-dot{position:relative;width:44px;height:44px;border-radius:50%;background:var(--c);overflow:hidden;box-shadow:0 4px 14px rgba(60,40,70,.16),inset 0 0 0 1px rgba(0,0,0,.07)}
-.sw::before{content:'';position:absolute;top:-4px;left:50%;width:52px;height:52px;margin-left:-26px;border-radius:50%;box-shadow:0 0 18px 4px rgba(212,175,55,.55);opacity:0;animation:swGlow 3.2s ease-in-out infinite;pointer-events:none}
+.sw{display:flex;flex-direction:column;align-items:center;gap:10px;width:120px;position:relative}
+.sw small{font-family:var(--sans);font-weight:600;font-size:16px;color:var(--ink);line-height:1.2}
+.sw-dot{position:relative;width:76px;height:76px;border-radius:50%;background-color:var(--c);overflow:hidden;box-shadow:0 4px 14px rgba(60,40,70,.16),inset 0 0 0 1px rgba(0,0,0,.07)}
+.sw::before{content:'';position:absolute;top:-6px;left:50%;width:88px;height:88px;margin-left:-44px;border-radius:50%;box-shadow:0 0 18px 4px rgba(212,175,55,.55);opacity:0;animation:swGlow 3.2s ease-in-out infinite;pointer-events:none}
 .sw:nth-child(2n)::before{animation-delay:-1.6s}
 @keyframes swGlow{0%,100%{opacity:.1}50%{opacity:.9}}
 .sw-dot::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.85) 48%,transparent 62%);background-size:250% 100%;animation:swSheen 3.6s ease-in-out infinite}
@@ -635,6 +635,62 @@ img{max-width:100%}
 .lb-nav{top:50%;transform:translateY(-50%)}
 .lb-prev{left:10px}.lb-next{right:10px}
 
+/* hospedaje premium: lista estilo Roxana + mapa claro estilo valeyandres */
+.hosp-slide{padding:8px 4px}
+.hosp-num{font-family:var(--serif);font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;font-weight:500;font-size:64px;color:rgba(125,98,17,.28);margin:0 0 -6px;align-self:flex-start;padding-left:6px}
+.hosp-arrow{top:150px}
+.hotel-gallery{display:flex;flex-direction:column;gap:8px;width:100%;margin:6px 0 18px}
+.hotel-photo{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--hair-gold);background:#fff;box-shadow:0 12px 26px -14px rgba(60,40,70,.45),inset 0 0 0 2px rgba(255,252,248,.6)}
+.hotel-photo--main{aspect-ratio:16/9;animation:levitate 6.5s ease-in-out infinite}
+.hotel-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hotel-photo::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 55%,rgba(70,98,42,.18))}
+.hotel-photo-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hotel-photo-row .hotel-photo{aspect-ratio:4/3}
+.hosp-type{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.24em}
+.hosp-name{font-size:28px;font-weight:600}
+.map-wrap{height:min(70vh,560px);background:#f2ede4;border:1px solid rgba(125,98,17,.28);box-shadow:0 22px 46px -26px rgba(60,40,70,.55)}
+#hotelMap{background:#f2ede4}
+#hotelMap .leaflet-tile-pane{filter:sepia(.5) saturate(.6) hue-rotate(-8deg) brightness(1.04) contrast(.96)}
+.map-vignette{box-shadow:inset 0 0 40px rgba(120,100,70,.18)}
+.mk-hotel{width:34px;height:34px;background:#5f7840;border:2px solid #fbf6ec;box-shadow:0 0 0 1px rgba(70,98,42,.5),0 6px 12px rgba(60,40,30,.35)}
+.mk-hotel span{font-family:var(--sans);font-size:15px;font-weight:700}
+.mk-hotel::after{border-color:rgba(95,120,64,.45)}
+.leaflet-marker-icon.on .mk-hotel{background:#3d5524;transform:scale(1.25)}
+.mk-venue div{background:#2c2530;border:none;padding:8px 14px;box-shadow:0 8px 16px rgba(44,37,48,.35)}
+.mk-venue b{color:#f3dc8a}
+.mk-venue span{color:#fbf6ec;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase}
+.mk-venue i{border-top-color:#2c2530}
+.map-ctrls button{border-radius:12px;background:#fffdf8;border:1px solid rgba(125,98,17,.25);color:var(--ink);box-shadow:0 4px 10px rgba(60,40,30,.15)}
+.map-ctrls svg{stroke:var(--ink)}
+.map-pill{background:rgba(255,253,248,.95);border:1px solid rgba(125,98,17,.25);font-weight:500;color:var(--ink-soft)}
+.map-sheet{background:rgba(255,253,248,.97);color:var(--ink);border:1px solid rgba(125,98,17,.3);box-shadow:0 16px 34px rgba(60,40,30,.25)}
+.ms-close{color:var(--ink-soft)}
+.ms-type{color:var(--gold-deep)}
+.ms-name{color:var(--ink)}
+.ms-addr{color:var(--ink-soft)}
+.ms-dist{color:var(--accent-deep)}
+.ms-btn{color:var(--ink);border-color:rgba(125,98,17,.35)}
+.ms-btn--gold{background:var(--accent-deep);color:#fff}
+.leaflet-control-attribution{background:rgba(255,253,248,.7)!important;color:#777!important}
+.leaflet-control-attribution a{color:#555!important}
+.map-list{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.ml-item{display:flex;align-items:center;gap:14px;width:100%;min-height:62px;padding:12px 16px;border-radius:18px;text-align:left;cursor:pointer;
+  background:rgba(255,253,248,.85);border:1px solid rgba(125,98,17,.22);box-shadow:0 8px 18px -12px rgba(60,40,30,.35);transition:border-color .3s,transform .3s}
+.ml-item b{flex:0 0 auto;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#5f7840;color:#fff;font-family:var(--sans);font-weight:700;font-size:15px}
+.ml-item em{display:block;font-family:var(--serif);font-style:normal;font-weight:600;font-size:19px;color:var(--ink);line-height:1.2}
+.ml-item small{display:block;font-family:var(--sans);font-weight:500;font-size:14px;color:var(--ink-soft);margin-top:2px}
+.ml-item.on{border-color:var(--accent-deep);transform:translateX(4px)}
+
+/* momentos: resplandor difuminado + reflejo sutil */
+.mom-glow{position:absolute;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+.mom-glow::before{content:'';position:absolute;left:50%;top:52%;width:640px;height:520px;margin:-260px 0 0 -320px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(212,175,55,.22),rgba(212,175,55,0) 70%),radial-gradient(closest-side at 30% 40%,rgba(201,166,214,.45),transparent 75%),radial-gradient(closest-side at 72% 62%,rgba(160,190,120,.3),transparent 75%);
+  filter:blur(12px);animation:momGlow 14s ease-in-out infinite alternate}
+@keyframes momGlow{0%{transform:scale(1) rotate(0)}100%{transform:scale(1.12) rotate(8deg)}}
+.wi-refl{opacity:.3;border-radius:16px;-webkit-mask-image:linear-gradient(to top,#000 0%,transparent 60%);mask-image:linear-gradient(to top,#000 0%,transparent 60%)}
+.wi-refl i{display:none}
+.wheel-stage{height:440px}
+
 /* RSVP · estilo Jennifer repintado */
 .card.rsvp{background:rgba(255,253,251,.82)}
 .rsvp-for{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.2em}
@@ -685,7 +741,6 @@ img{max-width:100%}
   <div class="np-links" id="npLinks"><span class="np-ind" id="npInd"></span></div>
   <span class="np-sep"></span>
   <button class="np-lang" id="langBtn" type="button" aria-label="Change language / Cambiar idioma">EN</button>
-  <button class="np-icon" id="shareBtn" type="button" aria-label="Compartir"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
   <button class="np-menu-btn" id="menuBtn" type="button" data-en="☰ Menu">☰ Menú</button>
 </nav>
 <div class="fullmenu" id="fullmenu" aria-hidden="true">
@@ -805,11 +860,7 @@ img{max-width:100%}
     </figure>
     <p class="dc-palette-lbl rv" data-en="Suggested colors">Colores sugeridos</p>
     <div class="dc-swatches" id="dcSwatches">
-      <div class="sw"><span class="sw-dot" style="--c:#ffdad8"></span><small data-en="Pink">Rosa</small></div>
-      <div class="sw"><span class="sw-dot" style="--c:#fffbb9"></span><small data-en="Yellow">Amarillo</small></div>
-      <div class="sw"><span class="sw-dot" style="--c:#caf0fe"></span><small data-en="Sky blue">Celeste</small></div>
-      <div class="sw"><span class="sw-dot" style="--c:#cce8b5"></span><small data-en="Green">Verde</small></div>
-      <div class="sw"><span class="sw-dot" style="--c:#f1c9fe"></span><small data-en="Lilac">Lila</small></div>
+      <div class="sw"><span class="sw-dot" id="swDot" style="--c:#ffdad8"></span><small id="swName">Rosa</small></div>
     </div>
     <p class="dc-white rv"><i aria-hidden="true"></i><span data-en="White is reserved for the bride.">El color blanco está reservado para la novia.</span></p>
 
@@ -819,7 +870,7 @@ img{max-width:100%}
 
   <!-- ── MOMENTOS ── -->
   <section id="momentos" class="has-acu sec sec--champ" data-nav="Momentos" data-nav-en="Moments" style="padding-left:0;padding-right:0">
-    <div class="acu-bg" aria-hidden="true"><i style="background-image:url(acuarela/mancha-ovalo.webp);background-position:50% 52%"></i></div>
+    <div class="mom-glow" aria-hidden="true"></div>
     <span class="eyebrow rv" data-en="Moments">Momentos</span>
     <h2 class="heading split" data-en="Our story">Nuestra historia</h2>
     <p class="sub rv" data-en="Little pieces of the road that brought us here.">Pedacitos del camino que nos trajo hasta aquí.</p>
@@ -827,10 +878,6 @@ img{max-width:100%}
       <div class="wheel" id="wheel"></div>
     </div>
     <p class="wheel-hint" data-en="Drag to spin">Arrastra para girar</p>
-    <div class="gal-strip" style="padding:0 22px">
-      <figure class="clipr"><img class="plx" data-speed="-6" src="foto2.jpg" alt="Tyler y Lina" loading="lazy"></figure>
-      <figure class="clipr"><img class="plx" data-speed="6" src="foto5.jpg" alt="Tyler y Lina" loading="lazy"></figure>
-    </div>
   </section>
 
   <!-- ── HUILA ── -->
@@ -876,7 +923,7 @@ img{max-width:100%}
 
   <!-- ── HOSPEDAJE ── -->
   <section id="hospedaje" class="has-acu sec sec--champ" data-nav="Hospedaje" data-nav-en="Hotels">
-    <div class="acu-bg flip" aria-hidden="true"><i style="background-image:url(acuarela/mancha-champ.webp);background-position:40% 25%"></i><img class="acu-el" src="acuarela/cafe.webp" alt="" style="bottom:40px;right:-30px;width:150px"></div>
+    <div class="acu-bg flip" aria-hidden="true"><i style="background-image:url(acuarela/mancha-champ.webp);background-position:40% 25%"></i></div>
     <span class="eyebrow rv" data-en="For your stay">Para tu estancia</span>
     <h2 class="heading split" data-en="Where to stay">Hospedaje</h2>
     <div class="hosp-alert">
@@ -916,6 +963,7 @@ img{max-width:100%}
               <div class="ms-btns"><a class="ms-btn" id="msMaps" target="_blank" rel="noopener"></a><a class="ms-btn ms-btn--gold" id="msWeb" target="_blank" rel="noopener"></a></div>
             </div>
           </div>
+          <div class="map-list" id="mapList"></div>
         </div>
       </div>
     </div>
@@ -1098,6 +1146,7 @@ function applyLang(l){
   if(window.__rsvpLang) window.__rsvpLang();
   if(window.__mapLang) window.__mapLang();
   if(window.__rainLang) window.__rainLang();
+  if(window.__swLang) window.__swLang();
   try{localStorage.setItem('tl-lang',l);}catch(e){}
 }
 document.getElementById('langBtn').addEventListener('click',function(){applyLang(LANG==='es'?'en':'es');});
@@ -1196,8 +1245,8 @@ function renderHotels(){
     var sl=document.createElement('div');sl.className='hosp-slide';
     var fotos=(h.fotos&&h.fotos.length)?h.fotos:[h.img];
     sl.innerHTML='<div class="hosp-num">0'+(i+1)+'</div>'+
-      '<div class="hosp-photo"><img src="'+fotos[0]+'" alt="'+h.name+'"></div>'+
-      '<div class="hosp-thumbs">'+fotos.map(function(f,k){return '<button type="button" class="'+(k?'':'on')+'" aria-label="Foto '+(k+1)+'"><img src="'+f+'" alt=""></button>';}).join('')+'</div>'+
+      '<div class="hotel-gallery"><div class="hotel-photo hotel-photo--main"><img src="'+fotos[0]+'" alt="'+h.name+'"></div>'+
+        '<div class="hotel-photo-row">'+fotos.slice(1,3).map(function(f){return '<div class="hotel-photo"><img src="'+f+'" alt="'+h.name+'"></div>';}).join('')+'</div></div>'+
       '<div class="hosp-type">'+T(h.type,h.typeEn)+'</div>'+
       '<div class="hosp-name">'+h.name+'</div>'+
       '<div class="hosp-addr">'+h.addr+'</div>'+
@@ -1206,15 +1255,7 @@ function renderHotels(){
         '<a class="btn-main" href="'+h.web+'" target="_blank" rel="noopener">'+T('Reservar','Book')+'</a>'+
         '<a class="btn-ghost" href="'+h.maps+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>'+T('Cómo llegar','Directions')+'</a>'+
       '</div>';
-    (function(slide){
-      var main=slide.querySelector('.hosp-photo img');
-      slide.querySelectorAll('.hosp-thumbs button').forEach(function(b,k){
-        b.addEventListener('click',function(){
-          slide.querySelectorAll('.hosp-thumbs button').forEach(function(x){x.classList.toggle('on',x===b);});
-          gsap.to(main,{opacity:0,duration:.2,onComplete:function(){main.src=fotos[k];gsap.to(main,{opacity:1,duration:.35});}});
-        });
-      });
-    })(sl);
+
     track.appendChild(sl);
     var d=document.createElement('button');d.setAttribute('aria-label','Hotel '+(i+1));
     d.addEventListener('click',function(){goHotel(i);});dots.appendChild(d);
@@ -1258,7 +1299,7 @@ function goHotel(i){
   function fitAll(anim){
     if(!map||!bounds) return;
     /* padding asimétrico: arriba deja aire para la etiqueta de recepción */
-    map.fitBounds(bounds,{paddingTopLeft:[46,92],paddingBottomRight:[46,70],maxZoom:15,animate:anim!==false});
+    map.fitBounds(bounds,{paddingTopLeft:[110,92],paddingBottomRight:[120,80],maxZoom:15,animate:anim!==false});
   }
   function venueIcon(key){
     var ico=key==='ceremonia'?'✝':'♥';
@@ -1281,17 +1322,26 @@ function goHotel(i){
     cur=i;
     markers.forEach(function(m,k){var el=m.getElement();if(el)el.classList.toggle('on',k===i);});
     fillSheet(i);sheet.classList.add('on');pill.classList.add('off');
+    document.querySelectorAll('#mapList .ml-item').forEach(function(x,k){x.classList.toggle('on',k===i);});
     var h=HOTELS[i];map.flyTo([h.lat-0.0035,h.lng],15,{duration:.9});
   }
   function closeSheet(){cur=-1;sheet.classList.remove('on');pill.classList.remove('off');markers.forEach(function(m){var el=m.getElement();if(el)el.classList.remove('on');});}
   document.getElementById('msClose').addEventListener('click',closeSheet);
+  function renderList(){
+    var box=document.getElementById('mapList');box.innerHTML='';
+    HOTELS.forEach(function(h,i){
+      var b=document.createElement('button');b.type='button';b.className='ml-item'+(i===cur?' on':'');
+      b.innerHTML='<b>'+(i+1)+'</b><span><em>'+h.name+'</em><small>'+h.minRec+' min '+T('a la recepción','to the reception')+' · '+h.kmRec+' km</small></span>';
+      b.addEventListener('click',function(){if(map){document.getElementById('mapWrap').scrollIntoView({behavior:'smooth',block:'center'});select(i);}});
+      box.appendChild(b);
+    });
+  }
+  renderList();
   function initMap(){
     if(typeof L==='undefined') return;
     var mobile=window.matchMedia('(pointer:coarse)').matches;
     map=L.map('hotelMap',{zoomControl:false,attributionControl:true,scrollWheelZoom:false,dragging:!mobile,tap:false,zoomSnap:.25});
-    var base='https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
-    L.tileLayer(base+'World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Tiles &copy; Esri'}).addTo(map);
-    L.tileLayer(base+'World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16}).addTo(map);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:17,attribution:'Tiles &copy; Esri'}).addTo(map);
     var rec=[VENUES.recepcion.lat,VENUES.recepcion.lng],cer=[VENUES.ceremonia.lat,VENUES.ceremonia.lng];
     bounds=L.latLngBounds([rec,cer]);
     HOTELS.forEach(function(h,i){
@@ -1315,7 +1365,7 @@ function goHotel(i){
     map.invalidateSize();fitAll(false);
     setTimeout(function(){map.invalidateSize();fitAll(false);},450);
     window.__mapLang=function(){
-      if(cur>-1)fillSheet(cur);
+      renderList();if(cur>-1)fillSheet(cur);
       map.eachLayer(function(l){if(l.options&&l.options.icon&&l.options.icon.options.className==='mk-venue-wrap'){var isCer=l.getLatLng().lat===cer[0];l.setIcon(venueIcon(isCer?'ceremonia':'recepcion'));}});
     };
   }
@@ -1420,11 +1470,6 @@ function closeMenu(cb){
 }
 document.getElementById('menuBtn').addEventListener('click',openMenu);
 document.getElementById('fmClose').addEventListener('click',function(){closeMenu();});
-document.getElementById('shareBtn').addEventListener('click',function(){
-  var url='https://boda-tyler-y-lina-rutherford.vercel.app';
-  if(navigator.share){navigator.share({title:'Tyler & Lina',text:T('¡Nos casamos! 3 de julio de 2027','We are getting married! July 3, 2027'),url:url}).catch(function(){});}
-  else{try{navigator.clipboard.writeText(url);}catch(e){}alert(T('Enlace copiado','Link copied'));}
-});
 (function(){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)markNav(e.target.id);});},{rootMargin:'-45% 0px -50% 0px'});
   navSecs.forEach(function(s){io.observe(s);});
@@ -1729,20 +1774,19 @@ function initAll(){
   /* dress code: figuras entran */
   gsap.from('.dc-dance',{y:R?0:40,opacity:0,duration:1.1,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:'.dc-dance',start:'top 90%',once:true}});
   gsap.from('.sw-dot',{scale:0,opacity:0,duration:.5,stagger:.08,ease:'back.out(2.5)',immediateRender:false,scrollTrigger:{trigger:'#dcSwatches',start:'top 92%',once:true}});
-  /* círculos que intercambian lugar en bucle (7 s): se cruzan con easing suave y regresan */
-  if(!R){
-    var sws=document.querySelectorAll('#dcSwatches .sw');
-    [[0,1],[2,3]].forEach(function(pr,k){
-      var A=sws[pr[0]],B=sws[pr[1]];if(!A||!B) return;
-      var d=B.offsetLeft-A.offsetLeft;
-      var tl=gsap.timeline({repeat:-1,delay:1.2+k*1.75});
-      tl.to(A,{x:d,duration:1.4,ease:'power2.inOut'},0).to(A,{y:-16,duration:.7,ease:'sine.out',yoyo:true,repeat:1},0)
-        .to(B,{x:-d,duration:1.4,ease:'power2.inOut'},0).to(B,{y:16,duration:.7,ease:'sine.out',yoyo:true,repeat:1},0)
-        .to(A,{x:0,duration:1.4,ease:'power2.inOut'},3.5).to(A,{y:-16,duration:.7,ease:'sine.out',yoyo:true,repeat:1},3.5)
-        .to(B,{x:0,duration:1.4,ease:'power2.inOut'},3.5).to(B,{y:16,duration:.7,ease:'sine.out',yoyo:true,repeat:1},3.5)
-        .to({},{duration:2.1},4.9);
-    });
-  }
+  /* una sola bola que pasa suavemente por cada color sugerido */
+  (function(){
+    var dot=document.getElementById('swDot'),name=document.getElementById('swName');
+    var C=[['#ffdad8','Rosa','Pink'],['#fffbb9','Amarillo','Yellow'],['#caf0fe','Celeste','Sky blue'],['#cce8b5','Verde','Green'],['#f1c9fe','Lila','Lilac']],k=0;
+    function paint(){name.textContent=T(C[k][1],C[k][2]);}
+    paint();window.__swLang=paint;
+    if(R) return;
+    setInterval(function(){
+      k=(k+1)%C.length;
+      gsap.to(dot,{backgroundColor:C[k][0],duration:1.4,ease:'sine.inOut'});
+      gsap.to(name,{opacity:0,duration:.35,onComplete:function(){paint();gsap.to(name,{opacity:1,duration:.5});}});
+    },2800);
+  })();
   initSectionFades();
   __rain.init();
   /* galería: clip-path + parallax */
