@@ -1706,8 +1706,8 @@ function initAll(){
   });
   /* hero parallax */
   if(!R){
-    gsap.to('#heroMedia',{y:-70,filter:'blur(5px) brightness(.92)',ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
-    gsap.to('#heroContent',{y:-110,opacity:0,filter:'blur(10px)',ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'70% top',scrub:true}});
+    gsap.fromTo('#heroMedia',{y:0,filter:'blur(0px) brightness(1)'},{y:-70,filter:'blur(5px) brightness(.92)',ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+    gsap.fromTo('#heroContent',{y:0,opacity:1,filter:'blur(0px)'},{y:-110,opacity:0,filter:'blur(10px)',ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'70% top',scrub:true}});
     gsap.from('#heroContent > *',{y:30,opacity:0,duration:1.1,stagger:.15,ease:'power3.out',delay:.1});
   }
   /* countdown boxes */
