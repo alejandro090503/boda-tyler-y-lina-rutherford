@@ -820,19 +820,16 @@ img{max-width:100%}
 .pay-card.ok{border-color:var(--accent-deep)}
 .pay-toast{font-family:var(--serif);font-style:italic;font-weight:600;font-size:16px;color:var(--accent-deep);min-height:22px;margin-top:10px}
 
-/* ═══ destello premium al abrir el sobre ═══ */
-.burst{position:fixed;inset:0;z-index:9400;pointer-events:none;overflow:hidden;opacity:0;--bx:50%;--by:34%}
-.burst i{position:absolute;left:var(--bx);top:var(--by);display:block;border-radius:50%;transform:translate(-50%,-50%) scale(0);mix-blend-mode:screen}
-.b-halo{width:160vmax;height:160vmax;background:radial-gradient(circle,rgba(255,248,226,.95) 0%,rgba(255,236,190,.65) 12%,rgba(247,214,150,.28) 26%,rgba(247,231,206,0) 46%)}
-.b-core{width:34vmin;height:34vmin;background:radial-gradient(circle,#fff 0%,#fffaf0 30%,rgba(255,240,200,.6) 55%,rgba(255,240,200,0) 72%);filter:blur(2px)}
-.b-rays{width:220vmax;height:220vmax;border-radius:0!important;
-  background:repeating-conic-gradient(from 0deg,rgba(255,242,205,.0) 0deg,rgba(255,242,205,.55) 2.2deg,rgba(255,242,205,0) 6deg,rgba(255,242,205,0) 15deg);
-  -webkit-mask:radial-gradient(circle,#000 0%,rgba(0,0,0,.65) 18%,transparent 42%);mask:radial-gradient(circle,#000 0%,rgba(0,0,0,.65) 18%,transparent 42%)}
-.b-rays2{background:repeating-conic-gradient(from 7deg,rgba(212,175,55,0) 0deg,rgba(232,196,110,.45) 1.4deg,rgba(212,175,55,0) 4deg,rgba(212,175,55,0) 22deg)}
-.b-streak{width:150vw;height:7px;border-radius:50%!important;background:linear-gradient(90deg,transparent,rgba(255,236,190,.0) 8%,rgba(255,244,214,.95) 46%,#fff 50%,rgba(255,244,214,.95) 54%,rgba(255,236,190,0) 92%,transparent);filter:blur(1.5px)}
-.b-dust{position:absolute;inset:0}
-.b-dust span{position:absolute;left:var(--bx);top:var(--by);width:5px;height:5px;margin:-2.5px;border-radius:50%;
-  background:radial-gradient(circle,#fffbe8 0%,#f3d57e 45%,rgba(212,175,55,0) 70%);box-shadow:0 0 6px 1px rgba(255,226,150,.8)}
+/* ═══ destello premium al abrir el sobre: luz difuminada, sin rayos ═══ */
+.burst{position:fixed;inset:0;z-index:9400;pointer-events:none;overflow:hidden;opacity:0;--bx:50%;--by:36%}
+.burst i{position:absolute;left:var(--bx);top:var(--by);display:block;border-radius:50%;transform:translate(-50%,-50%) scale(0)}
+.b-core{width:22vmin;height:22vmin;background:radial-gradient(circle,#fff 0%,rgba(255,252,240,.95) 35%,rgba(255,244,214,0) 70%);filter:blur(6px)}
+.b-warm{width:90vmin;height:90vmin;background:radial-gradient(circle,rgba(255,236,196,.85) 0%,rgba(250,214,160,.45) 35%,rgba(247,214,170,0) 68%);filter:blur(22px)}
+.b-bloom{width:150vmax;height:150vmax;background:radial-gradient(circle,rgba(255,250,236,.9) 0%,rgba(253,238,214,.6) 22%,rgba(246,228,214,.25) 42%,rgba(246,236,232,0) 62%);filter:blur(30px)}
+.b-veil{width:260vmax;height:260vmax;background:#fffaf0}
+.b-orbs{position:absolute;inset:0;filter:blur(5px)}
+.b-orbs span{position:absolute;left:var(--bx);top:var(--by);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,250,232,.85) 0%,rgba(248,222,160,.4) 45%,rgba(240,205,140,0) 72%)}
 </style>
 </head>
 <body class="locked">
@@ -848,8 +845,8 @@ img{max-width:100%}
 </div>
 <div id="env-flash"></div>
 <div class="burst" id="burst" aria-hidden="true">
-  <i class="b-halo"></i><i class="b-rays"></i><i class="b-rays b-rays2"></i><i class="b-streak"></i><i class="b-core"></i>
-  <div class="b-dust" id="bDust"></div>
+  <i class="b-bloom"></i><i class="b-warm"></i><i class="b-veil"></i><i class="b-core"></i>
+  <div class="b-orbs" id="bOrbs"></div>
 </div>
 
 
@@ -1370,23 +1367,22 @@ function initEnvelope(){
 }
 
 
-/* destello premium: halo + rayos que giran + estela anamórfica + polvo dorado, y se funde a crema */
+/* destello premium: núcleo de luz que respira, bloom cálido muy difuminado y bokeh dorado que flota; se funde a crema */
 function premiumBurst(){
   var b=document.getElementById('burst');if(!b||prefersReduced) return null;
-  var dust=document.getElementById('bDust'),N=window.innerWidth<600?38:60,ps=[];
-  for(var i=0;i<N;i++){var d=document.createElement('span');dust.appendChild(d);ps.push(d);}
+  var orbs=document.getElementById('bOrbs'),N=window.innerWidth<600?16:24,W=window.innerWidth,H=window.innerHeight,list=[];
+  for(var i=0;i<N;i++){var o=document.createElement('span'),sz=10+Math.random()*46;o.style.width=o.style.height=sz+'px';o.style.margin=(-sz/2)+'px';orbs.appendChild(o);list.push(o);}
   var tl=gsap.timeline();
   tl.set(b,{opacity:1})
-    .fromTo('.b-core',{scale:0,opacity:0},{scale:1,opacity:1,duration:.9,ease:'power2.out'},0)
-    .fromTo('.b-streak',{scaleX:0,scaleY:.4,opacity:0},{scaleX:1,scaleY:1,opacity:1,duration:1.1,ease:'expo.out'},.15)
-    .fromTo('.b-rays',{scale:.15,opacity:0,rotation:0},{scale:1,opacity:1,rotation:22,duration:2.2,ease:'power2.out'},.25)
-    .fromTo('.b-rays2',{rotation:0},{rotation:-30,duration:2.6,ease:'none'},.25)
-    .fromTo('.b-halo',{scale:.05,opacity:0},{scale:1,opacity:1,duration:1.9,ease:'power2.inOut'},.35)
-    .to('.b-core',{scale:7,duration:1.4,ease:'power2.in'},1.1);
-  ps.forEach(function(d,i){
-    var a=Math.random()*Math.PI*2,r=(.18+Math.random()*.62)*Math.max(window.innerWidth,window.innerHeight),s=.5+Math.random()*1.6;
-    tl.fromTo(d,{x:0,y:0,scale:0,opacity:0},{x:Math.cos(a)*r,y:Math.sin(a)*r*.8+(Math.random()*40),scale:s,opacity:1,duration:1.6+Math.random()*1.2,ease:'power3.out'},.3+Math.random()*.6)
-      .to(d,{opacity:0,duration:.6},'>-0.5');
+    .fromTo('.b-core',{scale:0,opacity:0},{scale:1,opacity:1,duration:1.1,ease:'sine.out'},0)
+    .to('.b-core',{scale:1.25,duration:.6,ease:'sine.inOut',yoyo:true,repeat:1},1.1)
+    .fromTo('.b-warm',{scale:.2,opacity:0},{scale:1,opacity:1,duration:1.6,ease:'power2.out'},.2)
+    .fromTo('.b-bloom',{scale:.1,opacity:0},{scale:1,opacity:1,duration:2,ease:'power2.inOut'},.45)
+    .fromTo('.b-veil',{scale:0,opacity:0},{scale:1,opacity:1,duration:1.3,ease:'power2.in'},1.35);
+  list.forEach(function(o){
+    var a=Math.random()*Math.PI*2,r=(.08+Math.random()*.4)*Math.max(W,H),t=.2+Math.random()*.9;
+    tl.fromTo(o,{x:0,y:0,scale:.2,opacity:0},{x:Math.cos(a)*r,y:Math.sin(a)*r*.7-20-Math.random()*60,scale:1,opacity:.9,duration:2+Math.random()*.8,ease:'sine.out'},t)
+      .to(o,{opacity:0,duration:.9,ease:'sine.in'},t+1.3);
   });
   return tl;
 }
