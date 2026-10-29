@@ -1399,7 +1399,12 @@ function heroIntro(hv){
   if(!hv||prefersReduced){if(hv){hv.src='';hv.poster='img/hero-final.webp';}showNames();return;}
   gsap.set(kids,{opacity:0});if(hint) gsap.set(hint,{opacity:0});
   hv.addEventListener('timeupdate',function(){if(hv.duration&&hv.currentTime>=hv.duration-2.2)showNames();});
-  hv.addEventListener('ended',function(){hv.poster='img/hero-final.webp';showNames();});
+  /* se detiene en el cuadro con las alas de ambos colibríes arriba (7.625 s), no en el último */
+  var HOLD=7.625,held=false;
+  function hold(){if(held)return;held=true;hv.pause();try{hv.currentTime=HOLD;}catch(e){}hv.poster='img/hero-final.webp';showNames();}
+  if(hv.requestVideoFrameCallback){(function watch(){hv.requestVideoFrameCallback(function(now,m){if(m.mediaTime>=HOLD-0.03)hold();else if(!held)watch();});})();}
+  hv.addEventListener('timeupdate',function(){if(hv.currentTime>=HOLD-0.12)hold();});
+  hv.addEventListener('ended',hold);
   hv.addEventListener('error',function(){hv.poster='img/hero-final.webp';showNames();});
   var pr;try{hv.currentTime=0;pr=hv.play();}catch(e){showNames();return;}
   if(pr&&pr.catch) pr.catch(function(){hv.poster='img/hero-final.webp';showNames();});
