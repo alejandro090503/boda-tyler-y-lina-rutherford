@@ -487,7 +487,7 @@ img{max-width:100%}
 /* hero: video de acuarela con deriva lenta + brillo */
 .hero-media{inset:-6% 0 0 0}
 .hero-bg{position:absolute;inset:0;background:none;animation:none;overflow:hidden}
-.hero-drift{position:absolute;top:-19%;bottom:14%;left:-3%;right:-3%;display:block;animation:heroDrift 26s ease-in-out infinite alternate}
+.hero-drift{position:absolute;top:0;bottom:0;left:0;right:0;display:block}
 .hero-vid{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;background:#fbf6ec url('img/hero-poster.webp') center 30%/cover no-repeat}
 @keyframes heroDrift{0%{transform:translate(0,0) scale(1.02)}50%{transform:translate(-1.6%,1.2%) scale(1.07)}100%{transform:translate(1.4%,-1.8%) scale(1.1)}}
 .hero-shine{position:absolute;inset:0;mix-blend-mode:soft-light;pointer-events:none;
@@ -495,7 +495,7 @@ img{max-width:100%}
 @keyframes heroShine{0%{background-position:140% 0}60%,100%{background-position:-60% 0}}
 .hero-veil{background:linear-gradient(to bottom,rgba(246,236,232,0) 42%,rgba(246,236,232,.55) 58%,rgba(246,236,232,.9) 72%,rgba(246,236,232,.97) 84%,var(--bg) 100%)}
 #hero{padding-bottom:0}
-.hero-content{padding:0 24px 110px}
+.hero-content{padding:0 24px 205px}
 .hero-name,.hero-pre,.hero-date{text-shadow:0 0 18px rgba(255,255,255,.9),0 0 4px rgba(255,255,255,.8)}
 
 /* fundido uniforme entre secciones (colores los pone initSectionFades) */
@@ -819,6 +819,20 @@ img{max-width:100%}
 .pay-copy{font-family:var(--italiana);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-deep);padding:7px 12px;border-radius:999px;border:1px solid var(--hair)}
 .pay-card.ok{border-color:var(--accent-deep)}
 .pay-toast{font-family:var(--serif);font-style:italic;font-weight:600;font-size:16px;color:var(--accent-deep);min-height:22px;margin-top:10px}
+
+/* ═══ destello premium al abrir el sobre ═══ */
+.burst{position:fixed;inset:0;z-index:9400;pointer-events:none;overflow:hidden;opacity:0;--bx:50%;--by:34%}
+.burst i{position:absolute;left:var(--bx);top:var(--by);display:block;border-radius:50%;transform:translate(-50%,-50%) scale(0);mix-blend-mode:screen}
+.b-halo{width:160vmax;height:160vmax;background:radial-gradient(circle,rgba(255,248,226,.95) 0%,rgba(255,236,190,.65) 12%,rgba(247,214,150,.28) 26%,rgba(247,231,206,0) 46%)}
+.b-core{width:34vmin;height:34vmin;background:radial-gradient(circle,#fff 0%,#fffaf0 30%,rgba(255,240,200,.6) 55%,rgba(255,240,200,0) 72%);filter:blur(2px)}
+.b-rays{width:220vmax;height:220vmax;border-radius:0!important;
+  background:repeating-conic-gradient(from 0deg,rgba(255,242,205,.0) 0deg,rgba(255,242,205,.55) 2.2deg,rgba(255,242,205,0) 6deg,rgba(255,242,205,0) 15deg);
+  -webkit-mask:radial-gradient(circle,#000 0%,rgba(0,0,0,.65) 18%,transparent 42%);mask:radial-gradient(circle,#000 0%,rgba(0,0,0,.65) 18%,transparent 42%)}
+.b-rays2{background:repeating-conic-gradient(from 7deg,rgba(212,175,55,0) 0deg,rgba(232,196,110,.45) 1.4deg,rgba(212,175,55,0) 4deg,rgba(212,175,55,0) 22deg)}
+.b-streak{width:150vw;height:7px;border-radius:50%!important;background:linear-gradient(90deg,transparent,rgba(255,236,190,.0) 8%,rgba(255,244,214,.95) 46%,#fff 50%,rgba(255,244,214,.95) 54%,rgba(255,236,190,0) 92%,transparent);filter:blur(1.5px)}
+.b-dust{position:absolute;inset:0}
+.b-dust span{position:absolute;left:var(--bx);top:var(--by);width:5px;height:5px;margin:-2.5px;border-radius:50%;
+  background:radial-gradient(circle,#fffbe8 0%,#f3d57e 45%,rgba(212,175,55,0) 70%);box-shadow:0 0 6px 1px rgba(255,226,150,.8)}
 </style>
 </head>
 <body class="locked">
@@ -833,6 +847,10 @@ img{max-width:100%}
   <div class="env-tap" id="envTap" data-en="Tap to open">Toca para abrir</div>
 </div>
 <div id="env-flash"></div>
+<div class="burst" id="burst" aria-hidden="true">
+  <i class="b-halo"></i><i class="b-rays"></i><i class="b-rays b-rays2"></i><i class="b-streak"></i><i class="b-core"></i>
+  <div class="b-dust" id="bDust"></div>
+</div>
 
 
 <!-- ═══════════ MENÚ ═══════════ -->
@@ -857,7 +875,7 @@ img{max-width:100%}
   <!-- ── HERO ── -->
   <section id="hero" data-bot="#f6ece8" data-nav="Inicio" data-nav-en="Home">
     <div class="hero-media" id="heroMedia">
-      <div class="hero-bg"><i class="hero-drift"><video class="hero-vid" id="heroVid" muted loop playsinline preload="none" poster="img/hero-poster.webp" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/boda-tyler-y-lina-rutherford/hero.mp4"></video></i></div>
+      <div class="hero-bg"><i class="hero-drift"><video class="hero-vid" id="heroVid" muted playsinline preload="auto" poster="img/hero-poster.webp" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/boda-tyler-y-lina-rutherford/hero-recorrido.mp4"></video></i></div>
       <div class="hero-shine"></div>
     </div>
     <div class="hero-veil"></div>
@@ -1312,7 +1330,7 @@ function initEnvelope(){
   var scr=document.getElementById('envelope-screen'),vid=document.getElementById('opVideo'),poster=document.getElementById('opPoster'),
       tap=document.getElementById('envTap'),flash=document.getElementById('env-flash'),
       wrap=document.querySelector('.wrap'),done=false,revealed=false,fallback=null;
-  var REVEAL_AT=6.4; /* segundo en que el video ya quedó en crema */
+  var REVEAL_AT=5.9; /* segundo en que el video ya quedó en crema */
   gsap.fromTo(poster,{scale:1.04},{scale:1,duration:2.4,ease:'power2.out'});
   gsap.from(tap,{opacity:0,y:8,duration:.9,delay:.8,ease:'power2.out'});
 
@@ -1325,11 +1343,13 @@ function initEnvelope(){
     if(window._startAudio) window._startAudio();
     gsap.to(tap,{opacity:0,duration:.3});
     if(prefersReduced){finish();return;}
+    gsap.fromTo('#burst',{opacity:0},{opacity:0});
     var p;
     try{vid.playbackRate=1;p=vid.play();}catch(err){finish();return;}
     if(p&&p.then){p.then(function(){gsap.to(poster,{opacity:0,duration:.25,delay:.12});}).catch(finish);}
     else gsap.to(poster,{opacity:0,duration:.25,delay:.12});
-    vid.addEventListener('timeupdate',function(){if(vid.currentTime>=REVEAL_AT)finish();});
+    var burstOn=false;
+    vid.addEventListener('timeupdate',function(){if(!burstOn&&vid.currentTime>=3.9){burstOn=true;premiumBurst();}if(vid.currentTime>=REVEAL_AT)finish();});
     vid.addEventListener('ended',finish);
     fallback=setTimeout(finish,9000);
   }
@@ -1340,12 +1360,54 @@ function initEnvelope(){
     scr.style.display='none';
     try{vid.pause();vid.removeAttribute('src');vid.load();}catch(e){}
     var hv=document.getElementById('heroVid');
-    if(hv&&!prefersReduced){var hp=hv.play();if(hp&&hp.catch)hp.catch(function(){});}
     initAll();
-    gsap.to(flash,{opacity:0,duration:1,ease:'power2.out'});
+    heroIntro(hv);
+    gsap.to(flash,{opacity:0,duration:1.2,ease:'power2.out'});
+    burstOut();
   }
   scr.addEventListener('click',open);
   scr.addEventListener('touchend',open,{passive:false});
+}
+
+
+/* destello premium: halo + rayos que giran + estela anamórfica + polvo dorado, y se funde a crema */
+function premiumBurst(){
+  var b=document.getElementById('burst');if(!b||prefersReduced) return null;
+  var dust=document.getElementById('bDust'),N=window.innerWidth<600?38:60,ps=[];
+  for(var i=0;i<N;i++){var d=document.createElement('span');dust.appendChild(d);ps.push(d);}
+  var tl=gsap.timeline();
+  tl.set(b,{opacity:1})
+    .fromTo('.b-core',{scale:0,opacity:0},{scale:1,opacity:1,duration:.9,ease:'power2.out'},0)
+    .fromTo('.b-streak',{scaleX:0,scaleY:.4,opacity:0},{scaleX:1,scaleY:1,opacity:1,duration:1.1,ease:'expo.out'},.15)
+    .fromTo('.b-rays',{scale:.15,opacity:0,rotation:0},{scale:1,opacity:1,rotation:22,duration:2.2,ease:'power2.out'},.25)
+    .fromTo('.b-rays2',{rotation:0},{rotation:-30,duration:2.6,ease:'none'},.25)
+    .fromTo('.b-halo',{scale:.05,opacity:0},{scale:1,opacity:1,duration:1.9,ease:'power2.inOut'},.35)
+    .to('.b-core',{scale:7,duration:1.4,ease:'power2.in'},1.1);
+  ps.forEach(function(d,i){
+    var a=Math.random()*Math.PI*2,r=(.18+Math.random()*.62)*Math.max(window.innerWidth,window.innerHeight),s=.5+Math.random()*1.6;
+    tl.fromTo(d,{x:0,y:0,scale:0,opacity:0},{x:Math.cos(a)*r,y:Math.sin(a)*r*.8+(Math.random()*40),scale:s,opacity:1,duration:1.6+Math.random()*1.2,ease:'power3.out'},.3+Math.random()*.6)
+      .to(d,{opacity:0,duration:.6},'>-0.5');
+  });
+  return tl;
+}
+function burstOut(){var b=document.getElementById('burst');if(b)gsap.to(b,{opacity:0,duration:.9,ease:'power2.out',onComplete:function(){b.style.display='none';}});}
+/* ═══════════ HERO: recorrido de los colibríes (una vez) y luego los nombres ═══════════ */
+function heroIntro(hv){
+  var hc=document.getElementById('heroContent'),hint=document.getElementById('scrollHint'),shown=false;
+  var kids=hc.querySelectorAll(':scope > *');
+  function showNames(){
+    if(shown) return;shown=true;
+    gsap.fromTo(kids,{y:26,opacity:0,filter:'blur(8px)'},{y:0,opacity:1,filter:'blur(0px)',duration:1.3,stagger:.18,ease:'power3.out'});
+    if(hint) gsap.fromTo(hint,{opacity:0},{opacity:1,duration:1,delay:1.2});
+  }
+  if(!hv||prefersReduced){if(hv){hv.src='';hv.poster='img/hero-final.webp';}showNames();return;}
+  gsap.set(kids,{opacity:0});if(hint) gsap.set(hint,{opacity:0});
+  hv.addEventListener('timeupdate',function(){if(hv.duration&&hv.currentTime>=hv.duration-2.2)showNames();});
+  hv.addEventListener('ended',function(){hv.poster='img/hero-final.webp';showNames();});
+  hv.addEventListener('error',function(){hv.poster='img/hero-final.webp';showNames();});
+  var pr;try{hv.currentTime=0;pr=hv.play();}catch(e){showNames();return;}
+  if(pr&&pr.catch) pr.catch(function(){hv.poster='img/hero-final.webp';showNames();});
+  setTimeout(showNames,9500);
 }
 
 /* ═══════════ COUNTDOWN ═══════════ */
@@ -1919,7 +1981,7 @@ function initAll(){
   if(!R){
     gsap.fromTo('#heroMedia',{y:0,filter:'blur(0px) brightness(1)'},{y:-70,filter:'blur(5px) brightness(.92)',ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
     gsap.fromTo('#heroContent',{y:0,opacity:1,filter:'blur(0px)'},{y:-110,opacity:0,filter:'blur(10px)',ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'70% top',scrub:true}});
-    gsap.from('#heroContent > *',{y:30,opacity:0,duration:1.1,stagger:.15,ease:'power3.out',delay:.1});
+
   }
   /* countdown boxes */
   gsap.from('.cd-box',{y:R?0:30,opacity:0,rotationX:R?0:-40,duration:.8,stagger:.1,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:'.cd-grid',start:'top 88%',once:true}});
