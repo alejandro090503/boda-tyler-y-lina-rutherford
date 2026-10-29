@@ -811,7 +811,10 @@ img{max-width:100%}
 .pay-flag{font-size:22px;line-height:1}
 .pay-txt{flex:1;display:flex;flex-direction:column}
 .pay-txt b{font-family:var(--serif);font-weight:700;font-size:19px;color:var(--ink);line-height:1.1}
-.pay-txt b small{font-family:var(--italiana);font-weight:400;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-left:6px}
+.pay-logo{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.pay-logo img{height:24px;width:auto;display:block}
+.pay-logo img[alt=Zelle]{height:28px;border-radius:6px}
+.pay-txt b small{margin-left:0;font-family:var(--italiana);font-weight:400;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-left:6px}
 .pay-txt span{white-space:nowrap;font-size:16px;font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink-soft)}
 .pay-copy{font-family:var(--italiana);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-deep);padding:7px 12px;border-radius:999px;border:1px solid var(--hair)}
 .pay-card.ok{border-color:var(--accent-deep)}
@@ -1144,9 +1147,9 @@ img{max-width:100%}
     <div class="pay-box rv">
       <p class="pay-intro" data-en="For your convenience, we have set up the following digital options:">Para tu comodidad, habilitamos las siguientes opciones digitales:</p>
       <div class="pay-list">
-        <button type="button" class="pay-card" data-copy="@Tyler-Rutherford-15"><span class="pay-txt"><b>Venmo <small>EE. UU.</small></b><span>@Tyler-Rutherford-15</span></span><span class="pay-copy" data-en="Copy">Copiar</span></button>
-        <button type="button" class="pay-card" data-copy="+15129277701"><span class="pay-txt"><b>Zelle <small>EE. UU.</small></b><span>+1 (512) 927-7701</span></span><span class="pay-copy" data-en="Copy">Copiar</span></button>
-        <button type="button" class="pay-card" data-copy="3125449724"><span class="pay-txt"><b>Nequi <small>Colombia</small></b><span>312 544 9724</span></span><span class="pay-copy" data-en="Copy">Copiar</span></button>
+        <button type="button" class="pay-card" data-copy="@Tyler-Rutherford-15"><span class="pay-txt"><b class="pay-logo"><img src="img/pagos/venmo.png" alt="Venmo" loading="lazy"><small>EE. UU.</small></b><span>@Tyler-Rutherford-15</span></span><span class="pay-copy" data-en="Copy">Copiar</span></button>
+        <button type="button" class="pay-card" data-copy="+15129277701"><span class="pay-txt"><b class="pay-logo"><img src="img/pagos/zelle.png" alt="Zelle" loading="lazy"><small>EE. UU.</small></b><span>+1 (512) 927-7701</span></span><span class="pay-copy" data-en="Copy">Copiar</span></button>
+        <button type="button" class="pay-card" data-copy="3125449724"><span class="pay-txt"><b class="pay-logo"><img src="img/pagos/nequi.png" alt="Nequi" loading="lazy"><small>Colombia</small></b><span>312 544 9724</span></span><span class="pay-copy" data-en="Copy">Copiar</span></button>
       </div>
       <p class="pay-toast" id="payToast" aria-live="polite"></p>
     </div>
