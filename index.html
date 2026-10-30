@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/apertura-poster.webp" fetchpriority="high">
+<link rel="preload" as="image" href="img/apertura-poster.webp?v=2" fetchpriority="high">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
 /* ── VARIABLES ── */
@@ -858,8 +858,8 @@ img{max-width:100%}
 
 <!-- ═══════════ SOBRE ═══════════ -->
 <div id="envelope-screen" role="button" aria-label="Abrir invitación">
-  <img class="op-poster" id="opPoster" src="img/apertura-poster.webp" alt="Tyler &amp; Lina · Neiva, Huila · 03·07·2027">
-  <video class="op-video" id="opVideo" muted playsinline preload="auto" poster="img/apertura-poster.webp" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/boda-tyler-y-lina-rutherford/apertura-sobre.mp4"></video>
+  <img class="op-poster" id="opPoster" src="img/apertura-poster.webp?v=2" alt="Tyler &amp; Lina · Neiva, Huila · 03·07·2027">
+  <video class="op-video" id="opVideo" muted playsinline preload="auto" poster="img/apertura-poster.webp?v=2" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/boda-tyler-y-lina-rutherford/apertura-colibries.mp4"></video>
   <div class="env-tap" id="envTap" data-en="Tap to open">Toca para abrir</div>
 </div>
 <div id="env-flash"></div>
@@ -1346,7 +1346,7 @@ function initEnvelope(){
   var scr=document.getElementById('envelope-screen'),vid=document.getElementById('opVideo'),poster=document.getElementById('opPoster'),
       tap=document.getElementById('envTap'),flash=document.getElementById('env-flash'),
       wrap=document.querySelector('.wrap'),done=false,revealed=false,fallback=null;
-  var REVEAL_AT=5.9; /* segundo en que el video ya quedó en crema */
+  var REVEAL_AT=6.9; /* segundo en que el video ya quedó en crema */
   gsap.fromTo(poster,{scale:1.04},{scale:1,duration:2.4,ease:'power2.out'});
   gsap.from(tap,{opacity:0,y:8,duration:.9,delay:.8,ease:'power2.out'});
 
@@ -1365,9 +1365,9 @@ function initEnvelope(){
     if(p&&p.then){p.then(function(){gsap.to(poster,{opacity:0,duration:.25,delay:.12});}).catch(finish);}
     else gsap.to(poster,{opacity:0,duration:.25,delay:.12});
     var burstOn=false;
-    vid.addEventListener('timeupdate',function(){if(!burstOn&&vid.currentTime>=3.9){burstOn=true;premiumBurst();}if(vid.currentTime>=REVEAL_AT)finish();});
+    vid.addEventListener('timeupdate',function(){if(!burstOn&&vid.currentTime>=6.0){burstOn=true;premiumBurst();}if(vid.currentTime>=REVEAL_AT)finish();});
     vid.addEventListener('ended',finish);
-    fallback=setTimeout(finish,9000);
+    fallback=setTimeout(finish,10000);
   }
   function reveal(){
     if(scr.style.display==='none') return;
@@ -1427,6 +1427,7 @@ function heroIntro(hv){
   }
   if(!hv||prefersReduced){if(hv){hv.src='';hv.poster='img/hero-final.webp';}showNames();return;}
   gsap.set(kids,{opacity:0});if(hint) gsap.set(hint,{opacity:0});
+  gsap.set('.fd-birds span',{opacity:0});
   hv.addEventListener('timeupdate',function(){if(hv.duration&&hv.currentTime>=hv.duration-2.2)showNames();});
   /* se detiene en el cuadro con las alas de ambos colibríes arriba (7.625 s), no en el último */
   var HOLD=7.625,held=false;
