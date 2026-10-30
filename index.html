@@ -867,6 +867,11 @@ img{max-width:100%}
 .acu-el{opacity:1!important;z-index:2;animation:acuLev 6s ease-in-out infinite!important;filter:drop-shadow(0 10px 14px rgba(60,40,70,.18))}
 @keyframes acuLev{0%,100%{translate:0 0;rotate:-3deg}50%{translate:4px -16px;rotate:3deg}}
 @keyframes acuLevFlip{0%,100%{translate:0 0;rotate:3deg}50%{translate:-4px -16px;rotate:-3deg}}
+
+/* adornos: siempre detrás del texto; los de fondo, difuminados y levitando suave */
+.acu-el.deco{z-index:-1!important}
+.acu-el.deco-bg{opacity:.5!important;filter:blur(2.2px) saturate(.85)!important;animation:acuLevSoft 11s ease-in-out infinite!important}
+@keyframes acuLevSoft{0%,100%{translate:0 0;rotate:-1.5deg;scale:1}50%{translate:6px -12px;rotate:1.5deg;scale:1.03}}
 </style>
 </head>
 <body class="locked">
@@ -954,14 +959,14 @@ img{max-width:100%}
 
   <!-- ── FRASE ── -->
   <section id="quote" class="has-acu sec sec--bg">
-    <div class="acu-bg" aria-hidden="true"><i style="background-image:url(acuarela/mancha-champ.webp);background-position:50% 40%"></i></div><img class="acu-el deco" aria-hidden="true" src="acuarela/huila/palmas.webp" alt="" style="top:4px;left:10px;width:64px">
+    <div class="acu-bg" aria-hidden="true"><i style="background-image:url(acuarela/mancha-champ.webp);background-position:50% 40%"></i></div><img class="acu-el deco deco-bg" aria-hidden="true" src="acuarela/huila/palmas.webp" alt="" style="top:0;left:-6px;width:150px">
     <p class="quote-txt rv" data-en="&ldquo;Like the hummingbird returning to the flower it loves, we choose each other every day. Today we want to celebrate that choice with you.&rdquo;">&ldquo;Como el colibrí que vuelve a la flor que ama, nosotros nos elegimos cada día. Hoy queremos celebrar esa elección contigo.&rdquo;</p>
     <div class="orn"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
   </section>
 
   <!-- ── UBICACIÓN ── -->
   <section id="ubicacion" class="has-acu sec sec--champ" data-nav="Lugar" data-nav-en="Venue">
-    <div class="acu-bg" aria-hidden="true"><i style="background-image:url(acuarela/mancha-rosa.webp);background-position:30% 20%"></i></div><img class="acu-el deco" aria-hidden="true" src="acuarela/huila/cascada.webp" alt="" style="top:40px;right:14px;width:70px">
+    <div class="acu-bg" aria-hidden="true"><i style="background-image:url(acuarela/mancha-rosa.webp);background-position:30% 20%"></i></div><img class="acu-el deco deco-bg" aria-hidden="true" src="acuarela/huila/cascada.webp" alt="" style="top:10px;right:-4px;width:130px">
     <span class="eyebrow rv" data-en="Where we celebrate">Dónde celebramos</span>
     <h2 class="heading split" data-en="Location">Ubicación</h2>
     <p class="sub rv" style="font-weight:600;color:var(--accent-deep)">Neiva, Huila · Colombia</p>
@@ -1209,7 +1214,7 @@ img{max-width:100%}
 
   <!-- ── ÁLBUM ── -->
   <section id="album" class="has-acu sec sec--bg" data-nav="Álbum" data-nav-en="Album">
-    <div class="acu-bg" aria-hidden="true"><i style="background-image:url(acuarela/mancha-verde.webp);background-position:45% 50%"></i></div><img class="acu-el deco" aria-hidden="true" src="acuarela/huila/montanas.webp" alt="" style="top:40px;right:12px;width:118px">
+    <div class="acu-bg" aria-hidden="true"><i style="background-image:url(acuarela/mancha-verde.webp);background-position:45% 50%"></i></div><img class="acu-el deco deco-bg" aria-hidden="true" src="acuarela/huila/montanas.webp" alt="" style="top:20px;right:-20px;width:230px">
     <span class="eyebrow rv" data-en="Share the moment">Comparte el momento</span>
     <h2 class="heading split" data-en="Photo album">Álbum de fotos</h2>
     <p class="sub rv" data-en="Help us keep every moment: upload here the photos you take during the event.">Ayúdanos a guardar cada momento: sube aquí las fotos que tomes durante el evento.</p>
@@ -1222,7 +1227,7 @@ img{max-width:100%}
 
   <!-- ── RSVP ── -->
   <section id="rsvp" class="has-acu sec sec--champ" data-nav="Confirmar" data-nav-en="RSVP">
-    <div class="acu-bg flip" aria-hidden="true"><i style="background-image:url(acuarela/mancha-ovalo.webp);background-position:50% 40%"></i></div><img class="acu-el deco" aria-hidden="true" src="acuarela/huila/cafe2.webp" alt="" style="bottom:40px;right:12px;width:100px"><img class="acu-el deco" aria-hidden="true" src="acuarela/huila/desierto.webp" alt="" style="top:44px;left:12px;width:120px">
+    <div class="acu-bg flip" aria-hidden="true"><i style="background-image:url(acuarela/mancha-ovalo.webp);background-position:50% 40%"></i></div><img class="acu-el deco deco-bg" aria-hidden="true" src="acuarela/huila/cafe2.webp" alt="" style="bottom:20px;right:-10px;width:170px"><img class="acu-el deco deco-bg" aria-hidden="true" src="acuarela/huila/desierto.webp" alt="" style="top:30px;left:-24px;width:230px">
     <span class="eyebrow rv" data-en="RSVP">Confirmación</span>
     <h2 class="heading split" data-en="Will you join us?">¿Nos acompañas?</h2>
     <p class="sub rv" data-en="Your presence will make this day truly special. Please confirm before April 2, 2027.">Tu presencia hará de este día algo verdaderamente especial. Por favor confírmanos antes del 2 de abril de 2027.</p>
