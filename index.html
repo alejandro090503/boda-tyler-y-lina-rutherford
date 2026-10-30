@@ -183,7 +183,7 @@ img{max-width:100%}
 /* ── HERO ── */
 #hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding-bottom:104px}
 .hero-media{position:absolute;inset:-8% 0 0 0;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('portada.jpg') center 18%/cover no-repeat;animation:kenburns 22s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;animation:kenburns 22s ease-in-out infinite alternate}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07) translate(-1%,-1%)}}
 .hero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(246,236,232,0) 38%,rgba(246,236,232,.78) 62%,rgba(246,236,232,.96) 76%,var(--bg) 92%)}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px}
@@ -830,6 +830,25 @@ img{max-width:100%}
 .b-orbs{position:absolute;inset:0;filter:blur(5px)}
 .b-orbs span{position:absolute;left:var(--bx);top:var(--by);border-radius:50%;
   background:radial-gradient(circle,rgba(255,250,232,.85) 0%,rgba(248,222,160,.4) 45%,rgba(240,205,140,0) 72%)}
+
+/* pagos ocultos hasta abrir el sobre */
+.pay-box{display:block;max-height:0;opacity:0;overflow:hidden;margin-top:0;padding-top:0;padding-bottom:0;border-width:0;transform:translateY(14px);
+  transition:max-height .7s cubic-bezier(.22,.61,.36,1),opacity .5s .15s,transform .6s .15s,margin-top .5s,padding .5s,border-width .3s}
+#giftEnv.open ~ .pay-box{max-height:620px;opacity:1;transform:none;margin-top:28px;padding-top:24px;padding-bottom:20px;border-width:1px}
+
+/* hero: "Nos casamos" más grande y fecha en negrita */
+.hero-pre{font-family:var(--serif)!important;font-weight:700!important;font-size:clamp(20px,5.6vw,24px)!important;letter-spacing:.34em!important;color:var(--ink)!important;margin-bottom:10px!important}
+.hero-date{font-family:var(--serif)!important;font-weight:700!important;font-size:clamp(20px,5.4vw,23px)!important;letter-spacing:.3em!important;color:var(--ink)!important}
+
+/* dos colibríes en la tarjeta de la fecha */
+.fd-birds{position:absolute;top:-44px;left:50%;width:220px;margin-left:-110px;height:96px;pointer-events:none}
+.fd-birds span{position:absolute;top:0;width:96px}
+.fd-birds img{display:block;width:96px;filter:drop-shadow(0 6px 10px rgba(60,40,70,.15))}
+.fd-birds .fb-l{left:6px}
+.fd-birds .fb-r{right:6px}
+.fd-birds .fb-in{display:block;animation:fbHover 2.8s ease-in-out infinite}
+.fd-birds .fb-r .fb-in{animation-delay:-1.4s}
+@keyframes fbHover{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
 </style>
 </head>
 <body class="locked">
@@ -890,7 +909,7 @@ img{max-width:100%}
   <section id="fecha" data-top="#f6ece8">
     <div class="fd-bg" aria-hidden="true"><i></i></div>
     <div class="fd-arch rv">
-      <img class="fd-bird" src="acuarela/colibri-cliente.webp" alt="" aria-hidden="true">
+      <div class="fd-birds" aria-hidden="true"><span class="fb-l"><img class="fb-in" src="acuarela/colibri-cliente.webp" alt=""></span><span class="fb-r"><img class="fb-in" src="acuarela/colibri-cliente-r.webp" alt=""></span></div>
       <p class="fd-save" data-en="Save the date">Reserva la fecha</p>
       <p class="fecha-label" data-en="Saturday">Sábado</p>
       <div class="fecha-row">
@@ -1159,7 +1178,7 @@ img{max-width:100%}
       </div>
     </button>
     <button class="env-tap-hint" id="giftHint" type="button" data-en="Tap to open">Toca para abrir</button>
-    <div class="pay-box rv">
+    <div class="pay-box" id="payBox">
       <p class="pay-intro" data-en="For your convenience, we have set up the following digital options:">Para tu comodidad, habilitamos las siguientes opciones digitales:</p>
       <div class="pay-list">
         <button type="button" class="pay-card" data-copy="@Tyler-Rutherford-15"><span class="pay-txt"><b class="pay-logo"><img src="img/pagos/venmo.png" alt="Venmo" loading="lazy"><small>EE. UU.</small></b><span>@Tyler-Rutherford-15</span></span><span class="pay-copy" data-en="Copy">Copiar</span></button>
@@ -1387,12 +1406,22 @@ function premiumBurst(){
   return tl;
 }
 function burstOut(){var b=document.getElementById('burst');if(b)gsap.to(b,{opacity:0,duration:.9,ease:'power2.out',onComplete:function(){b.style.display='none';}});}
+/* colibríes de la tarjeta de la fecha: llegan volando cada uno desde su lado */
+var __birds=false;
+function birdsIn(){
+  if(__birds) return;__birds=true;
+  if(prefersReduced) return;
+  var W=window.innerWidth;
+  gsap.fromTo('.fd-birds .fb-l',{x:-W*.6,y:-90,rotation:-14,opacity:0},{x:0,y:0,rotation:0,opacity:1,duration:2.2,ease:'power2.out',delay:.4});
+  gsap.fromTo('.fd-birds .fb-r',{x:W*.6,y:-120,rotation:14,opacity:0},{x:0,y:0,rotation:0,opacity:1,duration:2.2,ease:'power2.out',delay:.65});
+}
 /* ═══════════ HERO: recorrido de los colibríes (una vez) y luego los nombres ═══════════ */
 function heroIntro(hv){
   var hc=document.getElementById('heroContent'),hint=document.getElementById('scrollHint'),shown=false;
   var kids=hc.querySelectorAll(':scope > *');
   function showNames(){
     if(shown) return;shown=true;
+    birdsIn();
     gsap.fromTo(kids,{y:26,opacity:0,filter:'blur(8px)'},{y:0,opacity:1,filter:'blur(0px)',duration:1.3,stagger:.18,ease:'power3.out'});
     if(hint) gsap.fromTo(hint,{opacity:0},{opacity:1,duration:1,delay:1.2});
   }
@@ -1847,8 +1876,8 @@ document.getElementById('fmClose').addEventListener('click',function(){closeMenu
 /* ═══════════ MOMENTOS: carrusel 3D con reflejo (Verónica) ═══════════ */
 (function(){
   var ring=document.getElementById('wheel');
-  var fotos=['foto1.jpg','foto2.jpg','foto3.jpg','foto4.jpg','foto5.jpg','foto6.jpg'];
-  var list=fotos.concat(fotos);
+  var fotos=['foto1.jpg','foto2.jpg','foto3.jpg','foto4.jpg','foto5.jpg','foto6.jpg','foto7.jpg','foto8.jpg','foto9.jpg','foto10.jpg','foto11.jpg'];
+  var list=fotos;
   list.forEach(function(f){
     var d=document.createElement('div');d.className='wheel-item';d.dataset.src=f;
     d.innerHTML='<div class="wi-ph"><img src="'+f+'" alt="Tyler y Lina" draggable="false"></div>'+
