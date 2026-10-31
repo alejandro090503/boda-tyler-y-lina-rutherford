@@ -694,6 +694,14 @@ img{max-width:100%}
 .rsvp-wa-box{margin:0 auto 18px}
 .rsvp-wa-nota{font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--ink-soft);margin:0 0 10px}
 .rsvp-wa{display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:300px}
+.alergias{margin-top:18px}
+.alergias-ico{width:30px;height:30px;stroke:var(--accent-deep);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 8px}
+.alergias-tit{font-family:var(--serif);font-weight:700;font-size:24px;line-height:1.25;color:var(--ink);margin:0 0 6px}
+.alergias-sub{font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--ink-soft);margin:0 auto 14px;max-width:340px}
+.alergias .rsvp-textarea{max-width:340px;display:block;margin:0 auto}
+.alergias-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:340px;margin:14px auto 0}
+.alergias-btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:12px 8px;font-size:13px;letter-spacing:.08em;white-space:nowrap}
+.alergias-fb{font-family:var(--sans);font-size:15px;color:#a3311f;margin:10px auto 0;min-height:0}
 /* RSVP · estilo Jennifer repintado */
 .card.rsvp{background:rgba(255,253,251,.82)}
 .rsvp-for{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.2em}
@@ -1250,25 +1258,27 @@ img{max-width:100%}
           <p class="rsvp-contador-pie" id="rsvp-contador-pie"></p>
         </div>
         <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
-        <div class="rsvp-diet" id="rsvp-diet">
-          <label for="rsvpDiet"><svg viewBox="0 0 24 24"><path d="M7 2v9a3 3 0 006 0V2M10 2v20M17 2c-1.7 1.3-3 4-3 7s1.3 4 3 4v9"/></svg><span data-en="Allergies or special diet?">¿Alergias o dieta especial?</span></label>
-          <textarea class="rsvp-textarea" id="rsvpDiet" maxlength="160" placeholder="Ej.: vegetariana, alergia a la nuez, sin gluten…" data-ph-en="E.g.: vegetarian, nut allergy, gluten-free…"></textarea>
-          <small data-en="Optional. Tell us who and what; after confirming you can send it to the couple by WhatsApp.">Opcional. Cuéntanos quién y qué; al confirmar podrás enviarlo a los novios por WhatsApp.</small>
-        </div>
         <button class="btn-main rsvp-btn" id="rsvp-confirm-btn" type="button"><span id="rsvp-btn-text">Confirmar asistencia</span></button>
       </div>
       <div class="rsvp-gracias" id="rsvp-gracias" style="display:none">
         <svg class="rsvp-gracias-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>
         <p class="rsvp-gracias-title" id="rsvp-gracias-title"></p>
         <p class="rsvp-gracias-sub" id="rsvp-gracias-sub"></p>
-        <div class="rsvp-wa-box" id="rsvp-wa-box" style="display:none">
-          <p class="rsvp-wa-nota" data-en="One last step: send your allergies or diet to the couple.">Un último paso: envía tus alergias o dieta a los novios.</p>
-          <a class="btn-main rsvp-wa" id="rsvp-wa" href="#" target="_blank" rel="noopener"><span data-en="Send by WhatsApp">Enviar por WhatsApp</span></a>
-        </div>
         <button class="rsvp-editar-btn" id="rsvp-editar-btn" type="button" data-en="Change my answer">Modificar mi respuesta</button>
       </div>
       <p id="rsvp-feedback"></p>
       <span class="rsvp-limit" data-en="Please reply by April 2, 2027">Confirma antes del 2 de abril de 2027</span>
+    </div>
+    <div class="card rsvp alergias">
+      <svg class="alergias-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v9a3 3 0 006 0V2M10 2v20M17 2c-1.7 1.3-3 4-3 7s1.3 4 3 4v9"/></svg>
+      <p class="alergias-tit" data-en="Allergies or special diet?">¿Alergias o dieta especial?</p>
+      <p class="alergias-sub" data-en="Tell us who and what, and send it to us by WhatsApp or text message so we can plan the menu.">Cuéntanos quién y qué, y envíanoslo por WhatsApp o mensaje de texto para tenerlo en cuenta en el menú.</p>
+      <textarea class="rsvp-textarea" id="alergiasTxt" maxlength="200" placeholder="Ej.: Ana, vegetariana; Luis, alergia a la nuez…" data-ph-en="E.g.: Ana, vegetarian; Luis, nut allergy…"></textarea>
+      <div class="alergias-btns">
+        <a class="btn-main alergias-btn" id="alergiasWa" href="#" target="_blank" rel="noopener"><span data-en="WhatsApp">WhatsApp</span></a>
+        <a class="btn-main alergias-btn" id="alergiasSms" href="#"><span data-en="Text message">Mensaje de texto</span></a>
+      </div>
+      <p class="alergias-fb" id="alergiasFb"></p>
     </div>
   </section>
 
@@ -1753,7 +1763,7 @@ document.getElementById('fmClose').addEventListener('click',function(){closeMenu
       bandejaEl=$('rsvp-bandeja'),graciasEl=$('rsvp-gracias'),gTitleEl=$('rsvp-gracias-title'),gSubEl=$('rsvp-gracias-sub'),editarBtn=$('rsvp-editar-btn'),
       btnYes=$('btnYes'),btnNo=$('btnNo'),btnConf=$('rsvp-confirm-btn'),btnText=$('rsvp-btn-text'),feedEl=$('rsvp-feedback'),
       contWrap=$('rsvp-contador-wrap'),contNota=$('rsvp-contador-nota'),contValor=$('rsvp-contador-valor'),contPie=$('rsvp-contador-pie'),
-      btnMenos=$('rsvp-menos'),btnMas=$('rsvp-mas'),dietWrap=$('rsvp-diet'),dietEl=$('rsvpDiet');
+      btnMenos=$('rsvp-menos'),btnMas=$('rsvp-mas');
   var btnState='confirm';
   function paintBtn(){btnText.textContent=btnState==='update'?T('Actualizar respuesta','Update my answer'):btnState==='sending'?T('Enviando…','Sending…'):btnState==='frozen'?T('Fecha límite alcanzada','RSVP closed'):T('Confirmar asistencia','Confirm attendance');}
   function say(es,en,color){
@@ -1789,8 +1799,8 @@ document.getElementById('fmClose').addEventListener('click',function(){closeMenu
   function selectRsvp(choice){
     rsvpChoice=choice;
     btnYes.classList.toggle('rsvp-toggle-selected-yes',choice==='yes');btnNo.classList.toggle('rsvp-toggle-selected-no',choice==='no');
-    if(choice==='yes'){renderFields();fieldsEl.style.display='flex';dietWrap.style.display='block';}
-    else{fieldsEl.style.display='none';fieldsEl.innerHTML='';dietWrap.style.display='none';}
+    if(choice==='yes'){renderFields();fieldsEl.style.display='flex';}
+    else{fieldsEl.style.display='none';fieldsEl.innerHTML='';}
     pintaContador();
   }
   btnYes.addEventListener('click',function(){if(!frozen){selectRsvp('yes');say('');}});
@@ -1807,26 +1817,17 @@ document.getElementById('fmClose').addEventListener('click',function(){closeMenu
     }
     bandejaEl.style.display='none';graciasEl.style.display='';editarBtn.disabled=frozen;say('');
   }
-  /* alergias/dieta: no van al panel, se mandan por WhatsApp (pedido del cliente) */
-  var waBox=$('rsvp-wa-box'),waBtn=$('rsvp-wa'),waState=null;
-  function mostrarWa(diet,nombres){
-    waState=diet?[diet,nombres]:null;
-    if(!diet){waBox.style.display='none';return;}
-    var msg=T('Hola, les escribo de la invitación «'+urlPara+'» para la boda de Tyler & Lina.\nAlergias o dieta especial: '+diet+'\nConfirmamos: '+nombres.join(', '),
-              'Hi, this is the invitation «'+urlPara+'» for Tyler & Lina\'s wedding.\nAllergies or special diet: '+diet+'\nAttending: '+nombres.join(', '));
-    waBtn.href='https://wa.me/573213758075?text='+encodeURIComponent(msg);waBox.style.display='';
-  }
-  function abrirBandeja(){graciasState=null;waBox.style.display='none';graciasEl.style.display='none';bandejaEl.style.display='';say('');}
+  function abrirBandeja(){graciasState=null;graciasEl.style.display='none';bandejaEl.style.display='';say('');}
   editarBtn.addEventListener('click',function(){if(!frozen)abrirBandeja();});
   function applyFreeze(){
     if(!frozen)return;
-    btnYes.disabled=btnNo.disabled=btnConf.disabled=editarBtn.disabled=true;dietEl.disabled=true;
+    btnYes.disabled=btnNo.disabled=btnConf.disabled=editarBtn.disabled=true;
     fieldsEl.querySelectorAll('.rsvp-input').forEach(function(i){i.disabled=true;});
     btnMenos.disabled=btnMas.disabled=true;btnState='frozen';paintBtn();
     say('La fecha para confirmar asistencia ha pasado.','The RSVP deadline has passed.');
   }
   window.__rsvpLang=function(){paintBtn();pintaContador();if(rsvpChoice==='yes'){var keep=savedNames.slice();renderFields();savedNames=keep;}
-    if(lastMsg)say(lastMsg[0],lastMsg[1],lastMsg[2]);if(graciasState)mostrarGracias(graciasState[0],graciasState[1]);if(waState)mostrarWa(waState[0],waState[1]);};
+    if(lastMsg)say(lastMsg[0],lastMsg[1],lastMsg[2]);if(graciasState)mostrarGracias(graciasState[0],graciasState[1]);};
   paintBtn();
   if(urlPara){
     btnYes.disabled=btnNo.disabled=true;
@@ -1841,7 +1842,7 @@ document.getElementById('fmClose').addEventListener('click',function(){closeMenu
         if(d&&(d.estado==='confirmado'||d.estado==='declino')){
           var raw=(d.nombres_confirmados||[]).slice();
           /* la dieta viaja pegada al primer nombre: "Ana López · Dieta: sin gluten" */
-          if(raw[0]&&raw[0].indexOf(DIET_SEP)>-1){var parts=raw[0].split(DIET_SEP);raw[0]=parts[0];dietEl.value=parts.slice(1).join(DIET_SEP);}
+          if(raw[0]&&raw[0].indexOf(DIET_SEP)>-1)raw[0]=raw[0].split(DIET_SEP)[0];
           savedNames=raw;
           pasesAUsar=Math.min(pasesAsignados,Math.max(1,savedNames.length));
           selectRsvp(d.estado==='confirmado'?'yes':'no');
@@ -1885,7 +1886,6 @@ document.getElementById('fmClose').addEventListener('click',function(){closeMenu
     }
     var estadoFinal=rsvpChoice==='yes'?'confirmado':'declino';
     var enviar=nombres.slice();
-    var diet=(dietEl.value||'').trim().replace(/\s+/g,' ');
     btnState='sending';paintBtn();btnConf.disabled=true;say('');
     fetch(PANEL_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
       nombre:urlPara,url_boda:RSVP_URL,estado:estadoFinal,
@@ -1895,7 +1895,7 @@ document.getElementById('fmClose').addEventListener('click',function(){closeMenu
     .then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d};}).catch(function(){return{ok:r.ok,d:null};});})
     .then(function(res){
       btnConf.disabled=false;
-      if(res.ok&&res.d&&res.d.ok){btnState='update';paintBtn();mostrarGracias(estadoFinal,nombres);mostrarWa(estadoFinal==='confirmado'?diet:'',nombres);if(estadoFinal==='confirmado')confetti();return;}
+      if(res.ok&&res.d&&res.d.ok){btnState='update';paintBtn();mostrarGracias(estadoFinal,nombres);if(estadoFinal==='confirmado')confetti();return;}
       btnState='confirm';paintBtn();
       var err=res.d&&res.d.error;
       if(err==='no_match')say('No pudimos identificar tu invitación. Abre el enlace personalizado que te enviamos; ese es el único que registra tu confirmación.','We could not identify your invitation. Please open the personal link we sent you.',ERR);
@@ -1904,6 +1904,32 @@ document.getElementById('fmClose').addEventListener('click',function(){closeMenu
     })
     .catch(function(){btnConf.disabled=false;btnState='confirm';paintBtn();say('Sin conexión. Verifica tu internet e inténtalo de nuevo.','No connection. Check your internet and try again.',ERR);});
   });
+})();
+
+/* ═══════════ ALERGIAS / DIETA — aparte de la confirmación ═══════════ */
+(function(){
+  var WA='573213758075',SMS='+14753852950';
+  var txt=document.getElementById('alergiasTxt'),wa=document.getElementById('alergiasWa'),sms=document.getElementById('alergiasSms'),fb=document.getElementById('alergiasFb');
+  if(!txt)return;
+  function para(){
+    var qp=new URLSearchParams(location.search),tok=qp.get('i');
+    if(tok){try{var b64=tok.replace(/-/g,'+').replace(/_/g,'/');while(b64.length%4)b64+='=';var bin=atob(b64),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);
+      var n=(new TextDecoder().decode(u).split('|')[0]||'').trim();if(n)return n;}catch(e){}}
+    return (qp.get('para')||'').trim();
+  }
+  function mensaje(){
+    var d=(txt.value||'').trim().replace(/\s+/g,' '),p=para();
+    return T('Hola, les escribo '+(p?'de la invitación «'+p+'» ':'')+'para la boda de Tyler & Lina.\nAlergias o dieta especial: '+d,
+             'Hi, I\'m writing '+(p?'from the invitation «'+p+'» ':'')+'about Tyler & Lina\'s wedding.\nAllergies or special diet: '+d);
+  }
+  function revisar(e){
+    if((txt.value||'').trim())return true;
+    e.preventDefault();fb.textContent=T('Escribe primero quién y qué alergia o dieta.','Please write who and which allergy or diet first.');txt.focus();return false;
+  }
+  txt.addEventListener('input',function(){fb.textContent='';});
+  wa.addEventListener('click',function(e){if(!revisar(e))return;wa.href='https://wa.me/'+WA+'?text='+encodeURIComponent(mensaje());});
+  /* "?&body=" funciona en iPhone y en Android */
+  sms.addEventListener('click',function(e){if(!revisar(e))return;sms.href='sms:'+SMS+'?&body='+encodeURIComponent(mensaje());});
 })();
 
 /* ═══════════ MOMENTOS: carrusel 3D con reflejo (Verónica) ═══════════ */
